@@ -1,18 +1,32 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 
 const ContactForm = () => {
   const formRef = useRef(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
 
   const sendEmail = async (e) => {
     e.preventDefault()
     if (!formRef.current) return
+    
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+    
     try {
-      await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current, { publicKey: 'YOUR_PUBLIC_KEY' })
-      alert('Message sent!')
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CONTACT,
+        formRef.current,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      )
+      setSubmitStatus('success')
       formRef.current.reset()
     } catch (err) {
-      alert('Error sending message')
+      console.error('EmailJS Error:', err)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -50,11 +64,39 @@ const ContactForm = () => {
       </div>
 
       <div className="md:col-span-2 flex justify-center">
-        <button type="submit" className="btn-primary flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 12l18-9-6 18-4-6-8-3z" stroke="#11181f" strokeWidth="2"/></svg>
-          Send Message
+        <button 
+          type="submit" 
+          disabled={isSubmitting}
+          className="btn-primary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? (
+            <>
+              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+              </svg>
+              Sending...
+            </>
+          ) : (
+            <>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 12l18-9-6 18-4-6-8-3z" stroke="#11181f" strokeWidth="2"/></svg>
+              Send Message
+            </>
+          )}
         </button>
       </div>
+      
+      {submitStatus === 'success' && (
+        <div className="md:col-span-2 text-center p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+          <p className="text-green-400 font-medium">✅ Message sent successfully! We'll get back to you within 24 hours.</p>
+        </div>
+      )}
+      
+      {submitStatus === 'error' && (
+        <div className="md:col-span-2 text-center p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+          <p className="text-red-400 font-medium">❌ Failed to send message. Please try again or contact us directly.</p>
+        </div>
+      )}
     </form>
   )
 }

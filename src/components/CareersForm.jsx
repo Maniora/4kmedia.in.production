@@ -1,4 +1,5 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 const ROLES = [
   "Senior Graphic Designer",
@@ -12,13 +13,31 @@ const ROLES = [
 
 const CareersForm = () => {
   const formRef = useRef(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const form = new FormData(formRef.current || undefined)
-    const name = form.get('full_name')
-    alert(`Thanks ${name}! Your application was captured.`)
-    if (formRef.current) formRef.current.reset()
+    if (!formRef.current) return
+    
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+    
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CAREERS,
+        formRef.current,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      )
+      setSubmitStatus('success')
+      formRef.current.reset()
+    } catch (err) {
+      console.error('EmailJS Error:', err)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -62,8 +81,36 @@ const CareersForm = () => {
         <input name="resume" type="file" accept=".pdf,.doc,.docx" className="w-full file:mr-4 file:rounded file:border-0 file:bg-[#f7e839] file:text-[#11181f] file:font-semibold file:px-4 file:py-2 p-2 border border-white/10 bg-transparent text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50" required />
       </label>
       <div className="pt-1">
-        <button type="submit" className="btn-primary btn-shine w-full md:w-auto">Submit Application</button>
+        <button 
+          type="submit" 
+          disabled={isSubmitting}
+          className="btn-primary btn-shine w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? (
+            <>
+              <svg className="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+              </svg>
+              Submitting...
+            </>
+          ) : (
+            'Submit Application'
+          )}
+        </button>
       </div>
+      
+      {submitStatus === 'success' && (
+        <div className="text-center p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+          <p className="text-green-400 font-medium">✅ Application submitted successfully! We'll review your application and get back to you soon.</p>
+        </div>
+      )}
+      
+      {submitStatus === 'error' && (
+        <div className="text-center p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+          <p className="text-red-400 font-medium">❌ Failed to submit application. Please try again or contact us directly.</p>
+        </div>
+      )}
     </form>
   )
 }
