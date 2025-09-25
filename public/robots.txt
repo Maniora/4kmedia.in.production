@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Hide Vercel branding
+User-agent: vercel-bot
+Disallow: /
+
+# Sitemap
+Sitemap: https://4kmedia.in/sitemap.xml
