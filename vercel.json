@@ -38,10 +38,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "functions": {
-    "app/api/hide-vercel.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }

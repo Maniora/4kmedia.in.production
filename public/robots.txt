@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Hide Vercel and hosting detection
+# AGGRESSIVE: Block ALL detection tools
 User-agent: vercel-bot
 Disallow: /
 
@@ -15,6 +15,69 @@ User-agent: whatruns
 Disallow: /
 
 User-agent: stackshare
+Disallow: /
+
+User-agent: technorati
+Disallow: /
+
+User-agent: sitereport
+Disallow: /
+
+User-agent: netcraft
+Disallow: /
+
+User-agent: shodan
+Disallow: /
+
+User-agent: censys
+Disallow: /
+
+User-agent: securityheaders
+Disallow: /
+
+User-agent: observatory
+Disallow: /
+
+User-agent: ssllabs
+Disallow: /
+
+User-agent: gtmetrix
+Disallow: /
+
+User-agent: pagespeed
+Disallow: /
+
+User-agent: lighthouse
+Disallow: /
+
+User-agent: webpagetest
+Disallow: /
+
+User-agent: pingdom
+Disallow: /
+
+User-agent: uptimerobot
+Disallow: /
+
+User-agent: statuscake
+Disallow: /
+
+User-agent: uptime
+Disallow: /
+
+User-agent: monitor
+Disallow: /
+
+User-agent: scanner
+Disallow: /
+
+User-agent: crawler
+Disallow: /
+
+User-agent: spider
+Disallow: /
+
+User-agent: bot
 Disallow: /
 
 # Sitemap

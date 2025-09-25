@@ -2,7 +2,13 @@
   X-Powered-By: 4kMedia
   Server: 4kMedia-Web
   X-Hosted-By: 4kMedia
+  X-Platform: 4kMedia
+  X-Infrastructure: 4kMedia
+  X-Provider: 4kMedia
+  X-Service: 4kMedia
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Robots-Tag: noindex, nofollow
+  X-Detection-Block: enabled
+  X-Security-Level: high
