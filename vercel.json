@@ -17,6 +17,18 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Powered-By",
+          "value": "4kMedia"
+        },
+        {
+          "key": "Server",
+          "value": "4kMedia-Web"
+        },
+        {
+          "key": "X-Hosted-By",
+          "value": "4kMedia"
         }
       ]
     }
@@ -26,5 +38,10 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "functions": {
+    "app/api/hide-vercel.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }

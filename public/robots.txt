@@ -1,8 +1,20 @@
 User-agent: *
 Allow: /
 
-# Hide Vercel branding
+# Hide Vercel and hosting detection
 User-agent: vercel-bot
+Disallow: /
+
+User-agent: wappalyzer
+Disallow: /
+
+User-agent: builtwith
+Disallow: /
+
+User-agent: whatruns
+Disallow: /
+
+User-agent: stackshare
 Disallow: /
 
 # Sitemap
