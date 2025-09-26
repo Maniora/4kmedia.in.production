@@ -73,7 +73,7 @@ const Hero = () => {
 
   return (
     <section 
-      className="relative overflow-hidden py-15 min-h-screen flex items-center"
+      className="relative overflow-hidden py-12 md:py-15 min-h-[80vh] md:min-h-screen flex items-start md:items-center"
       style={{
         background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)'
       }}
@@ -87,8 +87,8 @@ const Hero = () => {
         }}
       />
 
-      {/* Animated illustrations */}
-      <div className="pointer-events-none absolute inset-0">
+      {/* Animated illustrations (hidden on mobile to reduce clutter) */}
+      <div className="pointer-events-none absolute inset-0 hidden md:block">
         {/* Megaphone - top left */}
         <div className="absolute left-[6%] top-[18%] animate-float-slow">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" className="drop-shadow-illustration">
@@ -116,11 +116,11 @@ const Hero = () => {
       </div>
       
       {/* Decorative Elements */}
-      <div className="absolute -top-[12%] md:top-[10%] -z-[1] right-0 w-[150px] h-[150px] bg-gradient-to-br from-[#f7e839]/20 to-[#f7e839]/10 rounded-full blur-3xl"></div>
-      <div className="absolute top-[96%] md:top-1/2 -z-[1] left-0 w-[150px] h-[150px] bg-gradient-to-br from-[#f7e839]/10 to-[#f7e839]/5 rounded-full blur-3xl"></div>
+      <div className="hidden md:block absolute -top-[12%] md:top-[10%] -z-[1] right-0 w-[150px] h-[150px] bg-gradient-to-br from-[#f7e839]/20 to-[#f7e839]/10 rounded-full blur-3xl"></div>
+      <div className="hidden md:block absolute top-[96%] md:top-1/2 -z-[1] left-0 w-[150px] h-[150px] bg-gradient-to-br from-[#f7e839]/10 to-[#f7e839]/5 rounded-full blur-3xl"></div>
       
-      <div className="absolute -top-[8%] -left-[33%] md:top-0 md:-left-[10%] w-[30rem] h-[30rem] rounded-full border-[0.7rem] border-[#f7e839] opacity-[0.02]"></div>
-      <div className="absolute top-[20%] -right-[132%] md:-top-[10%] md:-right-[30%] w-[30rem] h-[30rem] rounded-full border-[0.7rem] border-[#f7e839] opacity-[0.02]"></div>
+      <div className="hidden md:block absolute -top-[8%] -left-[33%] md:top-0 md:-left-[10%] w-[30rem] h-[30rem] rounded-full border-[0.7rem] border-[#f7e839] opacity-[0.02]"></div>
+      <div className="hidden md:block absolute top-[20%] -right-[132%] md:-top-[10%] md:-right-[30%] w-[30rem] h-[30rem] rounded-full border-[0.7rem] border-[#f7e839] opacity-[0.02]"></div>
 
       <div className="container max-w-7xl mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -134,13 +134,13 @@ const Hero = () => {
           
           {/* Main Heading with Typewriter */}
           <div className="relative">
-            <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+            <h1 className="text-5xl font-bold text-white leading-tight mb-4">
               Strategic Digital
               <br />
-              <span className="text-[#f7e839] relative min-h-[1.2em] inline-block text-3xl md:text-4xl lg:text-5xl">
+              <span className="text-[#f7e839] relative min-h-[1.2em] inline-block text-3xl ">
                 <span className="inline-flex items-center">
                   {typedText}
-                  <span className="inline-block w-1 h-8 md:h-10 bg-[#f7e839] ml-2 animate-pulse"></span>
+                  <span className="inline-block w-1 h-6 md:h-10 bg-[#f7e839] ml-2 animate-pulse"></span>
                 </span>
               </span>
             </h1>
@@ -162,56 +162,56 @@ const Hero = () => {
           </div>
 
           {/* Subtitle */}
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-medium">
             Zero to viral, we make it happen.
           </p>
 
           {/* Metrics */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-4 animate-fade-in delay-500">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-4 animate-fade-in delay-500">
             {/* Projects */}
-            <div className="group rounded-2xl bg-black/30 border border-white/20 p-8 mb-8 text-center hover:border-[#f7e839]/40 transition">
-              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-70">
-                <svg width="72" height="72" viewBox="0 0 48 48" fill="none">
+            <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
+              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
+                <svg width="48" height="48" className="md:w-[72px] md:h-[72px]" viewBox="0 0 48 48" fill="none">
                   <path d="M8 34h32M10 30h28M12 26h24M16 14h16l4 12H12l4-12z" stroke="#d1d5db" stroke-width="2" stroke-linejoin="round"/>
                   </svg>
               </div>
-              <div className="text-3xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-125">{projects}+</div>
+              <div className="text-2xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-110">{projects}+</div>
               <div className="text-white/70 font-medium">Projects</div>
                 </div>
 
             {/* Average ROI */}
             {/* Average ROI */}
-            <div className="group rounded-2xl bg-black/30 border border-white/20 p-8 mb-8 text-center hover:border-[#f7e839]/40 transition">
-              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-70">
-                <svg width="72" height="72" viewBox="0 0 48 48" fill="none">
+            <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
+              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
+                <svg width="48" height="48" className="md:w-[72px] md:h-[72px]" viewBox="0 0 48 48" fill="none">
                   <path d="M8 36l10-10 6 6 16-16" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <div className="text-3xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-125">{roi}x</div>
+              <div className="text-2xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-110">{roi}x</div>
               <div className="text-white/70 font-medium">Average ROI</div>
       </div>
 
             {/* Client Retention */}
-            <div className="group rounded-2xl bg-black/30 border border-white/20 p-8 mb-8 text-center hover:border-[#f7e839]/40 transition">
-              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-70">
-                <svg width="72" height="72" viewBox="0 0 48 48" fill="none">
+            <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
+              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
+                <svg width="48" height="48" className="md:w-[72px] md:h-[72px]" viewBox="0 0 48 48" fill="none">
                   <path d="M24 42s-14-8.7-14-20a14 14 0 1128 0c0 11.3-14 20-14 20z" stroke="#d1d5db" strokeWidth="2" fill="none"/>
                   <circle cx="24" cy="20" r="5" stroke="#d1d5db" strokeWidth="2"/>
                 </svg>
             </div>
-              <div className="text-3xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-125">{retention}%</div>
+              <div className="text-2xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-110">{retention}%</div>
               <div className="text-white/70 font-medium">Client Retention</div>
             </div>
 
             {/* Years Experience */}
-            <div className="group rounded-2xl bg-black/30 border border-white/20 p-8 mb-8 text-center hover:border-[#f7e839]/40 transition">
-              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-70">
-                <svg width="72" height="72" viewBox="0 0 48 48" fill="none">
+            <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
+              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
+                <svg width="48" height="48" className="md:w-[72px] md:h-[72px]" viewBox="0 0 48 48" fill="none">
                   <circle cx="24" cy="24" r="16" stroke="#d1d5db" strokeWidth="2"/>
                   <path d="M24 14v10l6 4" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
           </div>
-              <div className="text-3xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-125">{years}+</div>
+              <div className="text-2xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-110">{years}+</div>
               <div className="text-white/70 font-medium">Years Experience</div>
             </div>
           </div>
