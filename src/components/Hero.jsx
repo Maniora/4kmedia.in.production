@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Hook: Count Up
 const useCountUp = (to, duration = 1500) => {
@@ -38,13 +38,13 @@ const useTypewriter = (texts, speed = 100, delay = 2000) => {
   useEffect(() => {
     if (!texts || texts.length === 0) return;
     if (currentIndex < texts[currentTextIndex].length) {
-      const timeout = setTimeout(() => {
+        const timeout = setTimeout(() => {
         setCurrentText((prev) => prev + texts[currentTextIndex][currentIndex]);
         setCurrentIndex((prev) => prev + 1);
-      }, speed);
-      return () => clearTimeout(timeout);
-    } else {
-      const timeout = setTimeout(() => {
+        }, speed);
+        return () => clearTimeout(timeout);
+      } else {
+        const timeout = setTimeout(() => {
         setCurrentText('');
         setCurrentIndex(0);
         setCurrentTextIndex((prev) => (prev + 1) % texts.length);
@@ -57,18 +57,10 @@ const useTypewriter = (texts, speed = 100, delay = 2000) => {
 };
 
 const Hero = () => {
-  const projects = useCountUp(150);
-  const roi = useCountUp(12);
-  const retention = useCountUp(98);
-  const years = useCountUp(7);
-
-  const services = [
-    "Social Media Marketing (SMM)",
-    "Website Development",
-    "UI/UX Design",
-    "Video Production",
-    "Logo Design"
-  ];
+  const projects = useCountUp(150, 2200);
+  const roi = useCountUp(12, 2200);
+  const retention = useCountUp(98, 2200);
+  const years = useCountUp(7, 2200);
 
   const typingTexts = [
     "Build. Market. Grow.",
@@ -80,53 +72,121 @@ const Hero = () => {
   const typedText = useTypewriter(typingTexts, 80, 3000);
 
   return (
-    <section className="relative overflow-hidden min-h-[80vh] flex items-center bg-[#0d1117] py-15">
-      {/* Decorative background dots */}
-      <div className="absolute inset-0 grid-dots opacity-30" aria-hidden />
+    <section 
+      className="relative overflow-hidden min-h-screen flex items-center"
+      style={{
+        background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)'
+      }}
+    >
+      {/* Background texture */}
+      <div 
+        className="absolute inset-0 opacity-30"
+             style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f7e839' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+               backgroundSize: '40px 40px'
+        }}
+      />
 
-      <div className="container max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 items-center relative z-10">
+      {/* Animated illustrations */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* Megaphone - top left */}
+        <div className="absolute left-[6%] top-[18%] animate-float-slow">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" className="drop-shadow-illustration">
+            <path d="M3 10v4a2 2 0 002 2h1l2 3 2-3h2l6-3V7l-6-3H9L6 3 5 6H5a2 2 0 00-2 2z" stroke="#f7e839" strokeWidth="1.4" fill="rgba(247,232,57,0.08)"/>
+          </svg>
+        </div>
+        {/* Brackets - top right */}
+        <div className="absolute right-[8%] top-[22%] animate-float">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" className="drop-shadow-illustration">
+            <path d="M6 4L2 8l4 4M18 4l4 4-4 4" stroke="#f7e839" strokeWidth="1.6" strokeLinecap="round"/>
+          </svg>
+        </div>
+        {/* Pen nib - middle left */}
+        <div className="absolute left-[10%] top-[58%] animate-float">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="drop-shadow-illustration">
+            <path d="M12 12l7-7 2 2-7 7-2 5-2-2 5-2z" stroke="#f7e839" strokeWidth="1.4" fill="rgba(247,232,57,0.06)"/>
+          </svg>
+        </div>
+        {/* Chart - bottom right */}
+        <div className="absolute right-[10%] bottom-[14%] animate-float-slow">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" className="drop-shadow-illustration">
+            <path d="M4 18V6m6 12V9m6 9V4" stroke="#f7e839" strokeWidth="1.6" strokeLinecap="round"/>
+          </svg>
+        </div>
+      </div>
+      
+      {/* Decorative Elements */}
+      <div className="absolute -top-[12%] md:top-[10%] -z-[1] right-0 w-[150px] h-[150px] bg-gradient-to-br from-[#f7e839]/20 to-[#f7e839]/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-[96%] md:top-1/2 -z-[1] left-0 w-[150px] h-[150px] bg-gradient-to-br from-[#f7e839]/10 to-[#f7e839]/5 rounded-full blur-3xl"></div>
+      
+      <div className="absolute -top-[8%] -left-[33%] md:top-0 md:-left-[10%] w-[30rem] h-[30rem] rounded-full border-[0.7rem] border-[#f7e839] opacity-[0.02]"></div>
+      <div className="absolute top-[20%] -right-[132%] md:-top-[10%] md:-right-[30%] w-[30rem] h-[30rem] rounded-full border-[0.7rem] border-[#f7e839] opacity-[0.02]"></div>
 
-        {/* Left Side Content */}
-        <div className="text-center md:text-left">
-          <div className="mb-4 animate-fade-in">
-            <span className="text-xs uppercase tracking-wider bg-white/5 border border-white/10 px-3 py-1.5 rounded-full font-medium">
+      <div className="container max-w-7xl mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+
+          {/* Badge */}
+          <div className="animate-fade-in">
+            <span className="text-xs uppercase tracking-wider bg-[#f7e839]/10 border border-[#f7e839]/20 px-4 py-2 rounded-full font-medium text-[#f7e839]">
               Premium Digital Agency
             </span>
           </div>
-
-          {/* Typewriter Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold mb-2 animate-slide-up leading-tight">
-            Strategic Digital <br />
-            <span className="text-gradient relative text-3xl md:text-4.5xl lg:text-4xl font-bold inline-block min-h-[2em]">
-              <span className="inline-flex items-center">
-                {typedText}
-                <span className="inline-block align-middle ml-1 w-1 h-8 md:h-10 bg-[#f7e839] animate-pulse"></span>
+          
+          {/* Main Heading with Typewriter */}
+          <div className="relative">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+              Strategic Digital
+              <br />
+              <span className="text-[#f7e839] relative min-h-[1.2em] inline-block text-3xl md:text-4xl lg:text-5xl">
+                <span className="inline-flex items-center">
+                  {typedText}
+                  <span className="inline-block w-1 h-8 md:h-10 bg-[#f7e839] ml-2 animate-pulse"></span>
+                </span>
               </span>
-            </span>
-          </h1>
-          <p className="text-white/70 mb-6">Zero to viral, we make it happen.</p>
+            </h1>
+            
+            {/* Animated Underline */}
+            <svg 
+              className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-64 md:w-96" 
+                  viewBox="0 0 500 20" 
+                  preserveAspectRatio="none"
+                >
+                  <path 
+                d="M9.3,15.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2" 
+                fill="none" 
+                stroke="#f7e839" 
+                    strokeWidth="2" 
+                className="animate-dash"
+                  />
+                </svg>
+          </div>
+
+          {/* Subtitle */}
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-medium">
+            Zero to viral, we make it happen. Transform your brand with strategic digital solutions that drive real results.
+          </p>
 
           {/* Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10 animate-fade-in delay-500">
-            <div className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-xl p-5 sm:p-6 text-center backdrop-blur-sm hover:border-[#f7e839]/40 transition">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 animate-fade-in delay-500">
+            <div className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-xl p-5 text-center backdrop-blur-sm hover:border-[#f7e839]/40 transition">
               <div className="text-2xl md:text-3xl font-bold text-[#f7e839] mb-2">
                 {projects}+
               </div>
               <div className="text-white/80 text-sm font-semibold">Projects</div>
             </div>
-            <div className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-xl p-5 sm:p-6 text-center backdrop-blur-sm hover:border-[#22d3ee]/40 transition">
+            <div className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-xl p-5 text-center backdrop-blur-sm hover:border-[#f7e839]/40 transition">
               <div className="text-2xl md:text-3xl font-bold text-[#f7e839] mb-2">
                 {roi}x
               </div>
               <div className="text-white/80 text-sm font-semibold">Average ROI</div>
             </div>
-            <div className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-xl p-5 sm:p-6 text-center backdrop-blur-sm hover:border-[#ec4899]/40 transition">
+            <div className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-xl p-5 text-center backdrop-blur-sm hover:border-[#f7e839]/40 transition">
               <div className="text-2xl md:text-3xl font-bold text-[#f7e839] mb-2">
                 {retention}%
               </div>
               <div className="text-white/80 text-sm font-semibold">Client Retention</div>
             </div>
-            <div className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-xl p-5 sm:p-6 text-center backdrop-blur-sm hover:border-[#10b981]/40 transition">
+            <div className="flex flex-col justify-center items-center bg-white/5 border border-white/10 rounded-xl p-5 text-center backdrop-blur-sm hover:border-[#f7e839]/40 transition">
               <div className="text-2xl md:text-3xl font-bold text-[#f7e839] mb-2">
                 {years}+
               </div>
@@ -135,16 +195,16 @@ const Hero = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-row sm:gap-3 animate-slide-up delay-700 justify-center md:justify-start">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center animate-slide-up delay-700">
             <a
               href="/contact"
-              className="w-full sm:w-auto px-6 py-3 rounded-lg border border-[#f7e839]/60 bg-gradient-to-br from-red-900/30 to-transparent text-white font-semibold text-center text-base shadow-md hover:bg-red-600/10 hover:border-red-400 transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+              className="px-8 py-4 rounded-lg border border-[#f7e839]/60 bg-gradient-to-br from-red-900/30 to-transparent text-white font-semibold text-base shadow-md hover:bg-red-600/10 hover:border-red-400 transition-all duration-200 hover:shadow-lg"
             >
               Start Your Project
             </a>
             <a
               href="/services"
-              className="w-full sm:w-auto px-6 py-3 rounded-lg border border-[#f7e839]/60 bg-gradient-to-br from-yellow-900/20 to-transparent text-white font-semibold text-center text-base shadow-md hover:bg-[#f7e839]/10 hover:border-[#f7e839] transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#f7e839]"
+              className="px-8 py-4 rounded-lg border border-[#f7e839]/60 bg-gradient-to-br from-yellow-900/20 to-transparent text-white font-semibold text-base shadow-md hover:bg-[#f7e839]/10 hover:border-[#f7e839] transition-all duration-200 hover:shadow-lg"
             >
               Explore Services
             </a>
@@ -152,7 +212,7 @@ const Hero = () => {
               href="https://wa.me/9989958238"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3 rounded-lg border border-[#f7e839]/60 bg-gradient-to-br from-[#128C7E]/10 to-transparent text-white font-semibold text-center text-base flex items-center justify-center gap-2 shadow-md hover:bg-[#128C7E]/20 hover:border-[#25D366] transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#25D366]"
+              className="px-6 py-4 rounded-lg border border-[#f7e839]/60 bg-gradient-to-br from-[#128C7E]/10 to-transparent text-white font-semibold text-base flex items-center justify-center gap-2 shadow-md hover:bg-[#128C7E]/20 hover:border-[#25D366] transition-all duration-200 hover:shadow-lg"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -171,68 +231,65 @@ const Hero = () => {
               WhatsApp
             </a>
           </div>
-        </div>
 
-        {/* Right Side: Orb + Services Orbit */}
-        <div className="relative flex items-center justify-center mt-6 md:mt-0">
-          <div className="orb w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] animate-pulse-slow animate-zoom-pulse" />
-          <div className="orb-ring animate-zoom-pulse" />
-
-          {/* Orbiting chips - statically positioned */}
-          <div className="absolute inset-0 pointer-events-none block transform scale-75 sm:scale-100">
-            {/* Social Media Marketing - Top */}
-            <div
-              className="absolute left-1/2 animate-zoom-pulse"
-              style={{
-                top: '10%',
-                transform: 'translateX(-50%)',
-              }}
-            >
-              <div className="chip">Social Media Marketing</div>
-            </div>
-            {/* Website Development - Left */}
-            <div
-              className="absolute top-1/2 animate-zoom-pulse"
-              style={{
-                left: '8%',
-                transform: 'translateY(-50%)',
-              }}
-            >
-              <div className="chip">Website Development</div>
-            </div>
-            {/* UI/UX Design - Right */}
-            <div
-              className="absolute top-1/2 animate-zoom-pulse"
-              style={{
-                right: '8%',
-                transform: 'translateY(-50%)',
-              }}
-            >
-              <div className="chip">UI/UX Design</div>
-            </div>
-            {/* Video Production - Bottom Left */}
-            <div
-              className="absolute animate-zoom-pulse"
-              style={{
-                left: '18%',
-                bottom: '12%',
-              }}
-            >
-              <div className="chip">Video Production</div>
-            </div>
-            {/* Logo Design - Bottom Right */}
-            <div
-              className="absolute animate-zoom-pulse"
-              style={{
-                right: '18%',
-                bottom: '12%',
-              }}
-            >
-              <div className="chip">Logo Design</div>
-            </div>
-          </div>
         </div>
       </div>
+
+      {/* Custom Styles */}
+      <style>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+          0% { transform: translateY(0) }
+          50% { transform: translateY(-10px) }
+          100% { transform: translateY(0) }
+        }
+        
+        @keyframes dash {
+          to {
+            stroke-dashoffset: -1000;
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out;
+        }
+        
+        .animate-slide-up {
+          animation: slide-up 0.8s ease-out;
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-slow { animation: float 9s ease-in-out infinite; }
+        
+        .animate-dash {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: dash 3s linear infinite;
+        }
+        .drop-shadow-illustration { filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35)); }
+        
+        .delay-500 {
+          animation-delay: 0.5s;
+          animation-fill-mode: both;
+        }
+        
+        .delay-700 {
+          animation-delay: 0.7s;
+          animation-fill-mode: both;
+        }
+        
+        .delay-1000 {
+          animation-delay: 1s;
+          animation-fill-mode: both;
+        }
+      `}</style>
     </section>
   );
 };
