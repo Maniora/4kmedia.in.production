@@ -40,7 +40,7 @@ const SocialCard = ({ platform, handle, href, icon, color }) => (
 const Contact = () => (
   <main className="min-h-screen bg-gradient-to-b from-[#0a0c10] to-[#1a1f26]">
     {/* Hero Section */}
-    <section className="relative py-20 lg:py-28">
+    <section className="relative py-10 lg:py-15 bg-white/3">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
           <Reveal>
@@ -68,7 +68,7 @@ const Contact = () => (
     </section>
 
     {/* Contact Section */}
-    <section className="py-20 lg:py-28">
+    <section className="py-10 lg:py-15">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
@@ -142,51 +142,59 @@ const Contact = () => (
               />
             </div>
 
-            {/* Why Choose Us */}
-            <Reveal as="div" className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl p-8">
-              <h3 className="text-white font-bold text-xl mb-4">Why Partner With 4kMedia?</h3>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="h-5 w-5 rounded-full bg-[#f7e839] flex items-center justify-center mt-0.5 flex-shrink-0">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                      <path d="M20 6L9 17l-5-5" stroke="#11181f" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                  <span className="text-white/80">Performance-driven strategies with measurable ROI</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="h-5 w-5 rounded-full bg-[#f7e839] flex items-center justify-center mt-0.5 flex-shrink-0">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                      <path d="M20 6L9 17l-5-5" stroke="#11181f" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                  <span className="text-white/80">Transparent reporting and clear KPI alignment</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="h-5 w-5 rounded-full bg-[#f7e839] flex items-center justify-center mt-0.5 flex-shrink-0">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                      <path d="M20 6L9 17l-5-5" stroke="#11181f" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                  <span className="text-white/80">Agile execution with rigorous quality assurance</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="h-5 w-5 rounded-full bg-[#f7e839] flex items-center justify-center mt-0.5 flex-shrink-0">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                      <path d="M20 6L9 17l-5-5" stroke="#11181f" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                  <span className="text-white/80">Dedicated account management and support</span>
-                </div>
-              </div>
-            </Reveal>
+            {/* Why Choose Us moved below as full-width card */}
           </div>
         </div>
       </div>
     </section>
 
     {/* Social Media Section */}
-    <section className="py-20 lg:py-28 bg-white/5">
+    <section className="mb-15 mt-0">
+      <div className="container mx-auto px-4">
+        <Reveal>
+          <div className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl p-8 max-w-6xl mx-auto">
+            <h3 className="text-white font-bold text-xl mb-4">Why Partner With 4kMedia?</h3>
+            <div className="grid md:grid-cols-2 gap-3 md:gap-4">
+              <div className="flex items-start gap-3">
+                <div className="h-5 w-5 rounded-full bg-[#f7e839] flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17l-5-5" stroke="#11181f" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <span className="text-white/80">Performance-driven strategies with measurable ROI</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="h-5 w-5 rounded-full bg-[#f7e839] flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17l-5-5" stroke="#11181f" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <span className="text-white/80">Transparent reporting and clear KPI alignment</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="h-5 w-5 rounded-full bg-[#f7e839] flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17l-5-5" stroke="#11181f" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <span className="text-white/80">Agile execution with rigorous quality assurance</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="h-5 w-5 rounded-full bg-[#f7e839] flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17l-5-5" stroke="#11181f" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <span className="text-white/80">Dedicated account management and support</span>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* Social Media Section */}
+    <section className="py-10 lg:py-15 bg-white/5">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <Reveal>
@@ -252,7 +260,7 @@ const Contact = () => (
     </section>
 
     {/* CTA Section */}
-    <section className="py-20 lg:py-28">
+    <section className="py-10 lg:py-15">
       <div className="container mx-auto px-4">
         <Reveal>
           <div className="bg-gradient-to-r from-[#1a1f26] to-[#2d3748] rounded-2xl p-12 text-center border border-white/10 shadow-2xl max-w-4xl mx-auto">

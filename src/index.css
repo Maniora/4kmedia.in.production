@@ -15,6 +15,11 @@ body {
   overflow-x: hidden; /* prevent accidental horizontal scroll */
 }
 
+/* Force dark dropdown menus on selects (browser-native options list) */
+select.dark-select {
+  color-scheme: dark;
+}
+
 /* Scrollbar styling */
 html { scrollbar-color: #f7e839 #0f141a; scrollbar-width: thin; }
 *::-webkit-scrollbar { width: 10px; height: 10px; }

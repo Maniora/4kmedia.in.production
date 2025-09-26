@@ -47,14 +47,19 @@ const ContactForm = () => {
       </div>
       <div className="flex flex-col gap-2">
         <label className="text-sm text-white/80">Service Interested *</label>
-        <select name="service" className="p-3 border border-white/10 bg-white/5 text-white rounded" required>
-          <option value="" disabled selected>Select a service</option>
-          <option>SEO</option>
-          <option>Paid Media</option>
-          <option>Content Studio</option>
-          <option>Analytics & CRO</option>
-          <option>Web Design & Build</option>
-          <option>Social Media Management</option>
+        <select
+          name="service"
+          required
+          defaultValue=""
+          className="w-full p-3 border border-white/10 bg-transparent text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 dark-select"
+        >
+          <option value="" disabled className="bg-[#1a1f26] text-white">Select a service</option>
+          <option className="bg-[#1a1f26] text-white">SEO</option>
+          <option className="bg-[#1a1f26] text-white">Paid Media</option>
+          <option className="bg-[#1a1f26] text-white">Content Studio</option>
+          <option className="bg-[#1a1f26] text-white">Analytics & CRO</option>
+          <option className="bg-[#1a1f26] text-white">Web Design & Build</option>
+          <option className="bg-[#1a1f26] text-white">Social Media Management</option>
         </select>
       </div>
 
