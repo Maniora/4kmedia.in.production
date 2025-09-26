@@ -1,4 +1,5 @@
 import Reveal from '../components/Reveal'
+import AnimatedIllustrations from '../components/AnimatedIllustrations'
 
 const PrivacySection = ({ number, title, children, delay = 0 }) => (
   <Reveal as="section" className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-2xl p-8 mb-6" delay={delay}>
@@ -26,7 +27,8 @@ const PrivacyList = ({ items }) => (
 )
 
 const Privacy = () => (
-  <main className="min-h-screen bg-gradient-to-b from-[#0a0c10] to-[#1a1f26]">
+  <main className="relative min-h-screen" style={{ background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)' }}>
+    <AnimatedIllustrations />
     {/* Hero Section */}
     <section className="relative py-20 lg:py-28">
       <div className="container mx-auto px-4">

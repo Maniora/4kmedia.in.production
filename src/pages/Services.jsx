@@ -1,4 +1,5 @@
 import Reveal from '../components/Reveal'
+import AnimatedIllustrations from '../components/AnimatedIllustrations'
 
 const ServiceCard = ({ title, description, image, points, index }) => (
   <Reveal as="div" className="group bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-2xl overflow-hidden hover-lift transition-all duration-300 hover:border-[#f7e839]/30">
@@ -59,9 +60,10 @@ const ProcessStep = ({ number, title, description }) => (
 )
 
 const Services = () => (
-  <main className="min-h-screen bg-gradient-to-b from-[#0a0c10] to-[#1a1f26]">
+  <main className="relative min-h-screen" style={{ background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)' }}>
+    <AnimatedIllustrations />
     {/* Hero Section */}
-    <section className="relative py-10 lg:py-15 bg-white/3">
+    <section className="relative py-15 bg-white/3">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
           <Reveal>
@@ -70,7 +72,7 @@ const Services = () => (
             </span>
           </Reveal>
           <Reveal>
-            <h1 className="font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl mb-6">
+            <h1 className="font-extrabold tracking-tight text-5xl mb-6">
               <span className="text-white">Comprehensive </span>
               <span className="text-[#f7e839]">Digital Solutions</span>
             </h1>
@@ -89,7 +91,7 @@ const Services = () => (
     </section>
 
     {/* Services Grid */}
-    <section className="py-10 lg:py-15">
+    <section className="py-15">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {[
@@ -144,7 +146,7 @@ const Services = () => (
     </section>
 
     {/* Process Section */}
-    <section className="py-10 lg:py-15 bg-white/5">
+    {/* <section className="py-15 bg-white/5">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Reveal>
@@ -180,36 +182,14 @@ const Services = () => (
           />
         </div>
       </div>
-    </section>
-
-    {/* CTA Section */}
-    <section className="py-10 lg:py-15">
-      <div className="container mx-auto px-4">
-        <Reveal>
-          <div className="bg-gradient-to-r from-[#1a1f26] to-[#2d3748] rounded-2xl p-12 text-center border border-white/10 shadow-2xl max-w-4xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Accelerate Your Growth?</h3>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Let's discuss your objectives and create a customized strategy that aligns with your business goals and delivers tangible results.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-gradient-to-r from-[#f7e839] to-[#f5d428] text-[#11181f] font-semibold hover:shadow-lg transition-all duration-200">
-                Get Custom Proposal
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
+    </section> */}
 
     {/* Additional Services */}
-    <section className="py-10 lg:py-15 bg-white/5">
+    <section className="py-15 bg-white/5">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Specialized Solutions</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Specialized <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Solutions</span></h2>
           </Reveal>
           <Reveal>
             <p className="text-white/70 text-lg">
@@ -235,6 +215,29 @@ const Services = () => (
         </div>
       </div>
     </section>
+
+    {/* CTA Section */}
+    <section className="py-10 lg:py-15">
+      <div className="container mx-auto px-4">
+        <Reveal>
+          <div className="bg-gradient-to-r from-[#1a1f26] to-[#2d3748] rounded-2xl p-12 text-center border border-white/10 shadow-2xl max-w-4xl mx-auto">
+            <h3 className="text-4xl font-bold text-white mb-4">Ready to <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Accelerate Your Growth?</span></h3>
+            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+              Let's discuss your objectives and create a customized strategy that aligns with your business goals and delivers tangible results.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-gradient-to-r from-[#f7e839] to-[#f5d428] text-[#11181f] font-semibold hover:shadow-lg transition-all duration-200">
+                Get Custom Proposal
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
   </main>
 )
 

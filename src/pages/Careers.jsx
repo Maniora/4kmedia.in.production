@@ -1,4 +1,5 @@
 import Reveal from '../components/Reveal'
+import AnimatedIllustrations from '../components/AnimatedIllustrations'
 import CareersForm from '../components/CareersForm'
 
 const CareerCard = ({ title, children, icon, type = "Full-time", location = "Remote" }) => (
@@ -49,9 +50,10 @@ const StatCard = ({ number, label }) => (
 )
 
 const Careers = () => (
-  <main className="min-h-screen bg-gradient-to-b from-[#0a0c10] to-[#1a1f26]">
+  <main className="relative min-h-screen" style={{ background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)' }}>
+    <AnimatedIllustrations />
     {/* Hero Section */}
-    <section className="relative py-10 lg:py-15 bg-white/3">
+    <section className="relative py-15 bg-white/3">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
           <Reveal>
@@ -60,7 +62,7 @@ const Careers = () => (
             </span>
           </Reveal>
           <Reveal>
-            <h1 className="font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl mb-6">
+            <h1 className="font-extrabold tracking-tight text-5xl mb-6">
               <span className="text-white">Build Your Career at </span>
               <span className="text-[#f7e839]">4kMedia</span>
             </h1>
@@ -87,11 +89,11 @@ const Careers = () => (
 
 
     {/* Open Positions */}
-    <section className="py-10 lg:py-15">
+    <section className="py-15">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Open Positions</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Open <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Positions</span></h2>
           </Reveal>
           <Reveal>
             <p className="text-white/70 text-lg">
@@ -141,11 +143,11 @@ const Careers = () => (
     </section>
 
     {/* Benefits */}
-    <section className="py-10 lg:py-15 bg-white/5">
+    <section className="py-15 bg-white/5">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose 4kMedia?</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Why Choose <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">4kMedia?</span></h2>
           </Reveal>
           <Reveal>
             <p className="text-white/70 text-lg">
@@ -201,12 +203,12 @@ const Careers = () => (
     </section>
 
     {/* Application Form */}
-    <section id="apply" className="py-10 lg:py-15">
+    <section id="apply" className="py-15">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <Reveal>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Start Your Journey With Us</h3>
+              <h3 className="text-4xl font-bold text-white mb-4">Start Your <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Journey</span> With Us</h3>
             </Reveal>
             <Reveal>
               <p className="text-white/70 text-lg">
@@ -225,12 +227,12 @@ const Careers = () => (
     </section>
 
     {/* CTA Section */}
-    <section className="py-10 lg:py-15 bg-gradient-to-r from-[#1a1f26] to-[#2d3748]">
+    <section className="py-15 bg-gradient-to-r from-[#1a1f26] to-[#2d3748]">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto">
           <Reveal>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Don't See the Perfect Role?
+            <h3 className="text-4xl font-bold text-white mb-4">
+              Don't See the <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Perfect Role?</span>
             </h3>
           </Reveal>
           <Reveal>

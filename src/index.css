@@ -222,3 +222,25 @@ html { scrollbar-color: #f7e839 #0f141a; scrollbar-width: thin; }
 .orbit-item > .chip { transform: rotate(calc(-1 * (var(--start) + var(--turn)))); }
 
 
+
+
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply transform -translate-y-2 shadow-2xl;
+  }
+}
+
+@layer utilities {
+  .bg-white\/3 {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+}

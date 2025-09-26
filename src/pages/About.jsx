@@ -1,33 +1,12 @@
-import Reveal from '../components/Reveal'
-
-const StatCard = ({ number, label, description }) => (
-  <Reveal as="div" className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl p-8 text-center hover-lift transition-all duration-300">
-    <div className="text-3xl md:text-4xl font-bold text-[#f7e839] mb-2">{number}</div>
-    <div className="text-white font-semibold mb-2">{label}</div>
-    <div className="text-white/60 text-sm">{description}</div>
-  </Reveal>
-)
-
-const ValueCard = ({ title, description, icon }) => (
-  <Reveal as="div" className="bg-white/5 border border-white/10 rounded-xl p-8 hover-lift transition-all duration-300 group hover:border-[#f7e839]/30">
-    <div className="h-12 w-12 grid place-items-center rounded-lg bg-gradient-to-br from-[#f7e839] to-[#f5d428] text-[#11181f] mb-4 group-hover:scale-110 transition-transform duration-300">
-      {icon}
-    </div>
-    <h3 className="text-white font-bold text-lg mb-3">{title}</h3>
-    <p className="text-white/70 leading-relaxed">{description}</p>
-  </Reveal>
-)
-
-const ClientLogo = ({ name }) => (
-  <Reveal as="div" className="bg-white/5 border border-white/10 rounded-lg px-6 py-4 hover-lift transition-all duration-300 hover:border-white/20">
-    <div className="text-white font-medium opacity-80 hover:opacity-100 transition-opacity">{name}</div>
-  </Reveal>
-)
+// pages/about.jsx
+import Reveal from '../components/Reveal';
+import AnimatedIllustrations from '../components/AnimatedIllustrations';
 
 const About = () => (
-  <main className="min-h-screen bg-gradient-to-b from-[#0a0c10] to-[#1a1f26]">
+  <main className="relative min-h-screen" style={{ background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)' }}>
+    <AnimatedIllustrations />
     {/* Hero Section */}
-    <section className="relative py-10 lg:py-15 bg-white/3">
+    <section className="relative py-15 bg-white/3">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
           <Reveal>
@@ -36,7 +15,7 @@ const About = () => (
             </span>
           </Reveal>
           <Reveal>
-            <h1 className="font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl mb-6">
+            <h1 className="font-extrabold tracking-tight text-5xl mb-6">
               <span className="text-white">Driving Digital </span>
               <span className="text-[#f7e839]">Excellence</span>
             </h1>
@@ -55,12 +34,13 @@ const About = () => (
     </section>
 
     {/* Story Section */}
-    <section className="py-10 lg:py-15">
+    <section className="py-15">
       <div className="container mx-auto px-4">
+              <h2 className="text-4xl font-bold text-center text-white mb-8">Our <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Journey</span></h2>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Our Journey</h2>
+              
               <p className="text-white/80 text-lg leading-relaxed mb-6">
                 Founded with a vision to transform digital marketing, 4kMedia has evolved from a boutique studio into a full-service 
                 agency trusted by industry leaders. Our journey is built on a foundation of innovation, transparency, and relentless 
@@ -130,106 +110,101 @@ const About = () => (
     </section>
 
     {/* Stats Section */}
-    <section className="py-10 lg:py-15 bg-white/5">
+    <section className="py-15 bg-white/5">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">By the Numbers</h2>
+            <h2 className="text-4xl font-bold text-center text-white mb-8">By the <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Numbers</span></h2>
           </Reveal>
           <Reveal>
-            <p className="text-white/70 text-lg">
-              Our track record speaks to our commitment to delivering exceptional results for our clients.
-            </p>
+            <p className="text-white/70 text-lg">Our track record speaks to our commitment to delivering exceptional results for our clients.</p>
           </Reveal>
         </div>
-        
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <StatCard 
-            number="10+" 
-            label="Projects Delivered" 
-            description="Successful campaigns across various industries"
-          />
-          <StatCard 
-            number="12x" 
-            label="Average ROI" 
-            description="Return on investment for our clients"
-          />
-          <StatCard 
-            number="98%" 
-            label="Client Retention" 
-            description="Long-term partnerships built on trust"
-          />
-          <StatCard 
-            number="1+ Years" 
-            label="Industry Experience" 
-            description="Deep expertise in digital transformation"
-          />
+          {[
+            { n: '10+', l: 'Projects Delivered', d: 'Successful campaigns across various industries' },
+            { n: '12x', l: 'Average ROI', d: 'Return on investment for our clients' },
+            { n: '98%', l: 'Client Retention', d: 'Long-term partnerships built on trust' },
+            { n: '1+ Years', l: 'Industry Experience', d: 'Deep expertise in digital transformation' },
+          ].map((s) => (
+            <Reveal key={s.l} as="div" className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl p-8 text-center hover-lift transition-all duration-300">
+              <div className="text-3xl md:text-4xl font-bold text-[#f7e839] mb-2">{s.n}</div>
+              <div className="text-white font-semibold mb-2">{s.l}</div>
+              <div className="text-white/60 text-sm">{s.d}</div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
 
     {/* Trusted By Section */}
-    <section className="py-1 lg:py-15">
+    <section className="py-15">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Trusted by Industry Leaders</h2>
           </Reveal>
           <Reveal>
-            <p className="text-white/70 text-lg">
-              We're proud to partner with innovative companies driving change in their respective industries.
-            </p>
+            <p className="text-white/70 text-lg">We're proud to partner with innovative companies driving change in their respective industries.</p>
           </Reveal>
         </div>
-        
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl text-center mx-auto">
           {['ShopHub', 'ScaleX', 'NovaPay', 'Cloudly', 'AcmeAI', 'Brightly'].map((brand) => (
-            <ClientLogo key={brand} name={brand} />
+            <Reveal key={brand} as="div" className="bg-white/5 border border-white/10 rounded-lg px-6 py-4 hover-lift transition-all duration-300 hover:border-white/20">
+              <div className="text-white font-medium opacity-80 hover:opacity-100 transition-opacity">{brand}</div>
+            </Reveal>
           ))}
         </div>
       </div>
     </section>
 
     {/* Values Section */}
-    <section className="py-10 lg:py-15 bg-white/5">
+    <section className="py-15 bg-white/5">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Core Values</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Core Values</span></h2>
           </Reveal>
           <Reveal>
-            <p className="text-white/70 text-lg">
-              These principles guide every decision we make and every project we undertake.
-            </p>
+            <p className="text-white/70 text-lg">These principles guide every decision we make and every project we undertake.</p>
           </Reveal>
         </div>
-        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <ValueCard 
-            title="Results-Driven Approach"
-            description="We measure success by tangible business outcomes and growth metrics, not just deliverables."
-            icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></svg>}
-          />
-          <ValueCard 
-            title="Transparent Communication"
-            description="Simple strategies, clear reporting, and honest timelines ensure complete alignment with client goals."
-            icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" strokeWidth="1.5"/></svg>}
-          />
-          <ValueCard 
-            title="Agile Excellence"
-            description="Ship fast with precision, maintain rigorous quality standards, and continuously optimize for peak performance."
-            icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-          />
+          {[
+            {
+              t: 'Results-Driven Approach',
+              d: 'We measure success by tangible business outcomes and growth metrics, not just deliverables.',
+              i: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></svg>)
+            },
+            {
+              t: 'Transparent Communication',
+              d: 'Simple strategies, clear reporting, and honest timelines ensure complete alignment with client goals.',
+              i: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" strokeWidth="1.5"/></svg>)
+            },
+            {
+              t: 'Agile Excellence',
+              d: 'Ship fast with precision, maintain rigorous quality standards, and continuously optimize for peak performance.',
+              i: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>)
+            },
+          ].map((v) => (
+            <Reveal key={v.t} as="div" className="bg-white/5 border border-white/10 rounded-xl p-8 hover-lift transition-all duration-300 group hover:border-[#f7e839]/30">
+              <div className="h-12 w-12 grid place-items-center rounded-lg bg-gradient-to-br from-[#f7e839] to-[#f5d428] text-[#11181f] mb-4 group-hover:scale-110 transition-transform duration-300">
+                {v.i}
+              </div>
+              <h3 className="text-white font-bold text-lg mb-3">{v.t}</h3>
+              <p className="text-white/70 leading-relaxed">{v.d}</p>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
 
     {/* CTA Section */}
-    <section className="py-10 lg:py-15">
+    <section className="py-15">
       <div className="container mx-auto px-4">
         <Reveal>
           <div className="bg-gradient-to-r from-[#1a1f26] to-[#2d3748] rounded-2xl p-12 text-center border border-white/10 shadow-2xl">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Digital Presence?</h3>
+            <h3 className="text-4xl font-bold text-white mb-4">Ready to <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Transform Your Digital </span>Presence?</h3>
             <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
               Let's discuss your goals and create a tailored strategy that drives measurable results for your business.
             </p>
@@ -249,6 +224,6 @@ const About = () => (
       </div>
     </section>
   </main>
-)
+);
 
-export default About
+export default About;
