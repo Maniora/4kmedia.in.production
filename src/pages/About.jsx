@@ -1,6 +1,70 @@
 // pages/about.jsx
+import { useEffect, useState } from 'react';
 import Reveal from '../components/Reveal';
 import AnimatedIllustrations from '../components/AnimatedIllustrations';
+import FaqItem from '../components/FaqItem';
+
+// Count up hook
+function useCountUp(to, duration = 1500) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    let start;
+    let animationFrame;
+    const target = typeof to === 'number' ? to : 0;
+
+    const step = (ts) => {
+      if (!start) start = ts;
+      const progress = Math.min((ts - start) / duration, 1);
+      const currentValue = Math.floor(progress * target);
+      setValue(currentValue);
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(step);
+      } else {
+        setValue(target);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(step);
+
+    return () => {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    };
+  }, [to, duration]);
+
+  return value;
+}
+
+// Stats Section Component
+const StatsSection = () => {
+  // Stats config
+  const stats = [
+    { n: 1, suffix: '+ Years', l: 'Industry Experience', d: 'Deep expertise in digital transformation', duration: 700 },
+    { n: 10, suffix: '+', l: 'Projects Delivered', d: 'Successful campaigns across various industries', duration: 2200 },
+    { n: 98, suffix: '%', l: 'Client Retention', d: 'Long-term partnerships built on trust', duration: 2200 },
+    { n: 12, suffix: 'x', l: 'Average ROI', d: 'Return on investment for our clients', duration: 2200 },
+
+  ];
+
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      {stats.map((s, idx) => {
+        // Use count up for each stat
+        const count = useCountUp(s.n, s.duration);
+        return (
+          <Reveal key={s.l} as="div" className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl p-8 text-center hover-lift transition-all duration-300">
+            <div className="text-3xl md:text-4xl font-bold text-[#f7e839] mb-2">
+              {count}
+              {typeof s.suffix === 'string' && <span>{s.suffix}</span>}
+            </div>
+            <div className="text-white font-semibold mb-2">{s.l}</div>
+            <div className="text-white/60 text-sm">{s.d}</div>
+  </Reveal>
+);
+      })}
+    </div>
+  );
+};
 
 const About = () => (
   <main className="relative min-h-screen" style={{ background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)' }}>
@@ -120,43 +184,122 @@ const About = () => (
             <p className="text-white/70 text-lg">Our track record speaks to our commitment to delivering exceptional results for our clients.</p>
           </Reveal>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {[
-            { n: '10+', l: 'Projects Delivered', d: 'Successful campaigns across various industries' },
-            { n: '12x', l: 'Average ROI', d: 'Return on investment for our clients' },
-            { n: '98%', l: 'Client Retention', d: 'Long-term partnerships built on trust' },
-            { n: '1+ Years', l: 'Industry Experience', d: 'Deep expertise in digital transformation' },
-          ].map((s) => (
-            <Reveal key={s.l} as="div" className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl p-8 text-center hover-lift transition-all duration-300">
-              <div className="text-3xl md:text-4xl font-bold text-[#f7e839] mb-2">{s.n}</div>
-              <div className="text-white font-semibold mb-2">{s.l}</div>
-              <div className="text-white/60 text-sm">{s.d}</div>
-            </Reveal>
-          ))}
-        </div>
+         {/* Animated Stats with count up effect */}
+         <StatsSection />
       </div>
     </section>
 
-    {/* Trusted By Section */}
-    <section className="py-15">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Trusted by Industry Leaders</h2>
-          </Reveal>
-          <Reveal>
-            <p className="text-white/70 text-lg">We're proud to partner with innovative companies driving change in their respective industries.</p>
-          </Reveal>
+    {/* Brand Partners Section */}
+    <section className="py-15 relative bg-gradient-to-br from-white/5 to-white/2">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-[#f7e839]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#22d3ee]/5 rounded-full blur-3xl"></div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl text-center mx-auto">
-          {['ShopHub', 'ScaleX', 'NovaPay', 'Cloudly', 'AcmeAI', 'Brightly'].map((brand) => (
-            <Reveal key={brand} as="div" className="bg-white/5 border border-white/10 rounded-lg px-6 py-4 hover-lift transition-all duration-300 hover:border-white/20">
-              <div className="text-white font-medium opacity-80 hover:opacity-100 transition-opacity">{brand}</div>
-            </Reveal>
-          ))}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-8">
+            <span className="inline-block text-sm font-medium uppercase tracking-wider bg-white/5 border border-white/10 px-6 py-3 rounded-full mb-6 shadow-lg">
+              Brand Partners
+            </span>
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Our <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Brand Partners</span>
+            </h2>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+              We collaborate with top brands to deliver innovative solutions and measurable growth.
+            </p>
+          </div>
+          <div className="overflow-hidden w-full">
+            {/* Smooth infinite marquee loop for brand logos */}
+            <div className="relative w-full overflow-hidden">
+              <div
+                className="marquee flex items-center gap-10"
+                style={{
+                  width: 'max-content',
+                  minWidth: '100%',
+                  willChange: 'transform'
+                }}
+              >
+                {/* Define the logo set */}
+                {[
+                  {
+                    src: "/assets/brandLogos/ManiorawhiteLogo.webp",
+                    alt: "Brand 1"
+                  },
+                  {
+                    src: "/assets/brandLogos/logo2.png",
+                    alt: "Brand 2"
+                  },
+                  {
+                    src: "/assets/brandLogos/logo3.png",
+                    alt: "Brand 3"
+                  }
+                ].map((logo, idx) => (
+                  <img
+                    key={`logo1-${idx}`}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 transition"
+                    draggable="false"
+                  />
+                ))}
+                {/* Duplicate set for seamless loop */}
+                {[
+                  {
+                    src: "/assets/brandLogos/ManiorawhiteLogo.webp",
+                    alt: "Brand 1"
+                  },
+                  {
+                    src: "/assets/brandLogos/logo2.png",
+                    alt: "Brand 2"
+                  },
+                  {
+                    src: "/assets/brandLogos/logo3.png",
+                    alt: "Brand 3"
+                  }
+                ].map((logo, idx) => (
+                  <img
+                    key={`logo2-${idx}`}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 transition"
+                    draggable="false"
+                  />
+                ))}
+              </div>
+            </div>
+            <style>
+              {`
+                .marquee {
+                  display: flex;
+                  flex-wrap: nowrap;
+                  animation: marquee 20s linear infinite;
+                }
+                @keyframes marquee {
+                  0% {
+                    transform: translateX(0);
+                  }
+                  100% {
+                    transform: translateX(-50%);
+                  }
+                }
+                /* Remove any margin or padding on the last image to avoid a gap */
+                .marquee img:last-child {
+                  margin-right: 0 !important;
+                }
+              `}
+            </style>
         </div>
       </div>
+        {/* Marquee animation keyframes */}
+        <style>
+          {`
+            @keyframes marquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+          `}
+        </style>
     </section>
+
 
     {/* Values Section */}
     <section className="py-15 bg-white/5">
@@ -197,6 +340,62 @@ const About = () => (
           ))}
         </div>
       </div>
+    </section>
+
+        {/* FAQ Section */}
+        <section className="py-15 relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0f141a] to-[#1a2430]"></div>
+      
+      <Reveal as="div" className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-8">
+          <span className="inline-block text-sm font-medium uppercase tracking-wider bg-white/5 border border-white/10 px-6 py-3 rounded-full mb-6 shadow-lg">
+            Common Questions
+          </span>
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Frequently Asked <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Questions</span>
+          </h2>
+          <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+            Get answers to the most common questions about our process, timelines, and partnership model
+          </p>
+        </div>
+        
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              question: "What is the typical project timeline?",
+              answer: "Most engagements begin within 1-2 weeks post-discovery. Project duration varies based on scope, but we prioritize efficient execution without compromising quality."
+            },
+            {
+              question: "Which industries do you specialize in?",
+              answer: "We have extensive experience across e-commerce, SaaS, professional services, education, healthcare, and technology sectors, with tailored strategies for each vertical."
+            },
+            {
+              question: "Do you offer customized service packages?",
+              answer: "Yes, we develop bespoke solutions aligned with your specific business objectives, growth stage, and budget requirements for optimal results."
+            },
+            {
+              question: "How do you measure and report success?",
+              answer: "We establish clear KPIs upfront and provide comprehensive bi-weekly reports with transparent attribution and actionable insights for continuous improvement."
+            },
+            {
+              question: "What makes 4kMedia different from other agencies?",
+              answer: "Our unique blend of creative excellence, technical expertise, and data-driven strategies ensures we deliver measurable results that directly impact your bottom line."
+            },
+            {
+              question: "Do you provide ongoing support after project completion?",
+              answer: "Absolutely. We offer comprehensive maintenance and optimization packages to ensure your digital assets continue to perform at their peak."
+            }
+          ].map((faq, index) => (
+            <FaqItem 
+              key={index}
+              question={faq.question} 
+              answer={faq.answer}
+              delay={index * 100}
+              defaultOpen={index === 0}
+            />
+          ))}
+        </div>
+      </Reveal>
     </section>
 
     {/* CTA Section */}

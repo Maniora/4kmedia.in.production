@@ -1,207 +1,137 @@
-import Reveal from '../components/Reveal'
+import React from 'react';
+import Reveal from '../components/Reveal';
+import AnimatedIllustrations from '../components/AnimatedIllustrations';
 
-const TermsSection = ({ number, title, children, delay = 0 }) => (
-  <Reveal as="section" className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-2xl p-8 mb-6" delay={delay}>
-    <div className="flex items-start gap-4 mb-4">
-      <div className="h-8 w-8 grid place-items-center rounded-lg bg-gradient-to-br from-[#f7e839] to-[#f5d428] text-[#11181f] font-bold text-sm flex-shrink-0">
-        {number}
-      </div>
-      <h2 className="text-xl font-bold text-white">{title}</h2>
-    </div>
-    <div className="text-white/80 leading-relaxed space-y-3">
-      {children}
-    </div>
-  </Reveal>
-)
-
-const TermsList = ({ items }) => (
-  <ul className="space-y-2">
-    {items.map((item, index) => (
-      <li key={index} className="flex items-start gap-3">
-        <div className="h-1.5 w-1.5 rounded-full bg-[#f7e839] mt-2 flex-shrink-0"></div>
-        <span>{item}</span>
-      </li>
-    ))}
-  </ul>
-)
-
-const Terms = () => (
-  <main className="min-h-screen bg-gradient-to-b from-[#0a0c10] to-[#1a1f26]">
-    {/* Hero Section */}
-    <section className="relative py-20 lg:py-28">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-4xl mx-auto">
+const Terms = () => {
+  return (
+    <main className="relative min-h-screen" style={{ background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)' }}>
+      <AnimatedIllustrations />
+      
+      {/* Hero Section */}
+      <section className="relative py-20 bg-white/3">
+        <div className="container mx-auto px-4">
           <Reveal>
-            <span className="inline-block text-sm uppercase tracking-wider bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-6">
-              Legal Documentation
-            </span>
-          </Reveal>
-          <Reveal>
-            <h1 className="font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl">
-              <span className="text-white">Terms & </span>
-              <span className="text-[#f7e839]">Conditions</span>
-            </h1>
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-white text-4xl md:text-6xl font-bold mb-6">Terms of Service</h1>
+              <p className="text-white/70 text-lg">
+                Please read these terms carefully before using our services
+              </p>
+            </div>
           </Reveal>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Content Section */}
-    <section className="py-10 lg:pt-0 lg:pb-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Introduction */}
-          <Reveal as="div" className="bg-gradient-to-br from-[#11181f] to-[#1a222c] rounded-2xl p-8 border border-white/10 shadow-2xl mb-8">
-            <p className="text-white/80 text-lg leading-relaxed">
-              These Terms & Conditions govern your engagement with 4kMedia and outline the rules and regulations 
-              for accessing our digital marketing services. By using our services, you acknowledge that you have 
-              read, understood, and agree to be bound by these terms.
-            </p>
-          </Reveal>
+      {/* Content Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <Reveal>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12">
+              <div className="prose prose-invert max-w-none">
+                <h2 className="text-white text-2xl font-bold mb-6">1. Acceptance of Terms</h2>
+                <p className="text-white/70 mb-6">
+                  By accessing and using 4kMedia's services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                </p>
 
-          {/* Terms Sections */}
-          <div className="space-y-6">
-            <TermsSection number="01" title="Enrollment & Service Usage" delay={30}>
-              <TermsList items={[
-                "Clients must provide accurate and complete information during registration and service inquiries",
-                "4kMedia reserves the right to modify service offerings, pricing structures, and delivery schedules as necessary",
-                "All services are subject to availability and acceptance of our service agreement"
-              ]} />
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">2. Use License</h2>
+                <p className="text-white/70 mb-4">
+                  Permission is granted to temporarily download one copy of the materials on 4kMedia's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                </p>
+                <ul className="text-white/70 mb-6 list-disc list-inside space-y-2">
+                  <li>modify or copy the materials</li>
+                  <li>use the materials for any commercial purpose or for any public display</li>
+                  <li>attempt to reverse engineer any software contained on the website</li>
+                  <li>remove any copyright or other proprietary notations from the materials</li>
+                </ul>
 
-            <TermsSection number="02" title="Service-Related Terms" delay={60}>
-              <TermsList items={[
-                "Services are provided according to the specifications outlined in the signed contract or engagement letter",
-                "While we ensure professional execution of digital strategies, specific marketing outcomes cannot be guaranteed",
-                "Clients must adhere to agreed timelines for content approvals, feedback, and revision cycles"
-              ]} />
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">3. Service Description</h2>
+                <p className="text-white/70 mb-6">
+                  4kMedia provides digital marketing services including but not limited to SEO, paid media, content creation, web design, and social media management. We reserve the right to modify or discontinue any service at any time without notice.
+                </p>
 
-            <TermsSection number="03" title="Pricing and Payment Terms" delay={90}>
-              <TermsList items={[
-                "Full payment is required before service commencement unless otherwise specified in the contract",
-                "All payments are non-refundable except under circumstances outlined in our refund policy",
-                "Quoted fees exclude third-party costs including advertising budgets, hosting, domain registration, SSL certificates, and premium software licenses"
-              ]} />
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">4. Client Responsibilities</h2>
+                <p className="text-white/70 mb-4">
+                  As a client, you agree to:
+                </p>
+                <ul className="text-white/70 mb-6 list-disc list-inside space-y-2">
+                  <li>Provide accurate and complete information</li>
+                  <li>Make timely payments as agreed</li>
+                  <li>Provide necessary access to accounts and platforms</li>
+                  <li>Respond to requests for feedback and approvals in a timely manner</li>
+                </ul>
 
-            <TermsSection number="04" title="Refund Policy" delay={120}>
-              <TermsList items={[
-                "Refunds are granted only when services are not delivered as per agreed terms and specifications",
-                "No refunds are provided for completed services or ongoing monthly retainer agreements",
-                "Refund requests must be submitted in writing within 4 business days of service commencement"
-              ]} />
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">5. Payment Terms</h2>
+                <p className="text-white/70 mb-6">
+                  Payment terms will be specified in individual service agreements. Late payments may result in service suspension. All fees are non-refundable unless otherwise specified in writing.
+                </p>
 
-            <TermsSection number="05" title="Intellectual Property Rights" delay={150}>
-              <TermsList items={[
-                "All creative content, strategic plans, designs, and proprietary methodologies developed by 4kMedia remain our intellectual property",
-                "Clients receive limited license to use delivered content exclusively for their business operations",
-                "Additional usage rights require explicit written agreement and may involve additional fees"
-              ]} />
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">6. Intellectual Property</h2>
+                <p className="text-white/70 mb-6">
+                  All content, trademarks, and intellectual property on this website are owned by 4kMedia or its licensors. Work created for clients will be owned by the client upon full payment, except for proprietary methodologies and tools.
+                </p>
 
-            <TermsSection number="06" title="Client Responsibilities" delay={180}>
-              <TermsList items={[
-                "Timely provision of necessary materials, feedback, and approvals for campaign progression",
-                "Adherence to content guidelines and brand standards throughout the engagement",
-                "Prohibition of unauthorized reproduction, reselling, or misuse of delivered work products"
-              ]} />
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">7. Limitation of Liability</h2>
+                <p className="text-white/70 mb-6">
+                  In no event shall 4kMedia or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on 4kMedia's website, even if 4kMedia or a 4kMedia authorized representative has been notified orally or in writing of the possibility of such damage.
+                </p>
 
-            <TermsSection number="07" title="Data Protection and Privacy" delay={210}>
-              <TermsList items={[
-                "Client data is handled in accordance with our comprehensive Privacy Policy",
-                "By engaging our services, you consent to necessary data processing for service delivery",
-                "We implement industry-standard security measures to protect client information"
-              ]} />
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">8. Privacy Policy</h2>
+                <p className="text-white/70 mb-6">
+                  Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the website, to understand our practices.
+                </p>
 
-            <TermsSection number="08" title="Third-Party Services" delay={240}>
-              <TermsList items={[
-                "We may utilize third-party tools and platforms for analytics, advertising, and service enhancement",
-                "4kMedia is not liable for service interruptions, policy changes, or failures of third-party providers",
-                "Clients are responsible for maintaining their accounts with third-party service providers"
-              ]} />
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">9. Termination</h2>
+                <p className="text-white/70 mb-6">
+                  Either party may terminate services with 30 days written notice. Upon termination, all outstanding payments become due immediately.
+                </p>
 
-            <TermsSection number="09" title="Indemnification" delay={270}>
-              <p>
-                Clients agree to indemnify and hold harmless 4kMedia, its officers, directors, and employees from 
-                any claims, damages, liabilities, and expenses arising from service use, violation of these terms, 
-                or infringement of third-party rights.
-              </p>
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">10. Governing Law</h2>
+                <p className="text-white/70 mb-6">
+                  These terms and conditions are governed by and construed in accordance with the laws of India and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.
+                </p>
 
-            <TermsSection number="10" title="Limitation of Liability" delay={300}>
-              <p>
-                4kMedia's total liability for any claims shall not exceed the total fees paid by the client for 
-                the specific service giving rise to the claim. We are not liable for indirect, incidental, 
-                special, or consequential damages arising from service use.
-              </p>
-            </TermsSection>
+                <h2 className="text-white text-2xl font-bold mb-6">11. Changes to Terms</h2>
+                <p className="text-white/70 mb-6">
+                  4kMedia reserves the right to revise these terms of service at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.
+                </p>
 
-            <TermsSection number="11" title="Modification of Terms" delay={330}>
-              <p>
-                We reserve the right to modify these Terms & Conditions at any time. Continued use of our services 
-                after changes constitutes acceptance of the modified terms. Clients are responsible for regularly 
-                reviewing this document for updates.
-              </p>
-            </TermsSection>
-
-            <TermsSection number="12" title="Governing Law and Jurisdiction" delay={360}>
-              <p>
-                These Terms are governed by and construed in accordance with the laws of India. Any legal disputes 
-                shall be subject to the exclusive jurisdiction of the courts in New Delhi, India.
-              </p>
-            </TermsSection>
-
-              <TermsSection number="13" title="Dispute Resolution" delay={390}>
-              <TermsList items={[
-                "Parties agree to attempt resolution of disputes through good-faith negotiations",
-                "If unresolved, disputes shall proceed to mediation before pursuing legal action",
-                "Arbitration proceedings, if necessary, will be conducted in New Delhi, India"
-              ]} />
-            </TermsSection>
-
-              <TermsSection number="14" title="Termination" delay={420}>
-              <TermsList items={[
-                "Either party may terminate services with 30 days written notice for material breaches",
-                "Termination does not relieve clients of outstanding payment obligations",
-                "Upon termination, clients must cease using all proprietary materials provided by 4kMedia"
-              ]} />
-            </TermsSection>
-
-          <TermsSection number="15" title="Force Majeure" delay={450}>
-              <p>
-                4kMedia is not liable for failure to perform obligations due to circumstances beyond our 
-                reasonable control, including natural disasters, acts of government, internet outages, 
-                or other force majeure events.
-              </p>
-            </TermsSection>
-          </div>
-
-          {/* Contact Section */}
-          <Reveal as="div" className="bg-gradient-to-r from-[#1a1f26] to-[#2d3748] rounded-2xl p-8 text-center border border-white/10 shadow-2xl mt-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Questions About Our Terms?</h3>
-            <p className="text-white/80 mb-6">
-              If you have any questions or concerns regarding these Terms & Conditions, 
-              please don't hesitate to contact our legal team.
-            </p>
-            <a 
-              href="mailto:legal@4kmedia.in" 
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[#f7e839] to-[#f5d428] text-[#11181f] font-semibold hover:shadow-lg transition-all duration-200"
-            >
-              Contact Legal Team
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-            </a>
+                <h2 className="text-white text-2xl font-bold mb-6">12. Contact Information</h2>
+                <p className="text-white/70 mb-6">
+                  If you have any questions about these Terms of Service, please contact us at:
+                </p>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+                  <p className="text-white/70 mb-2"><strong>Email:</strong> legal@4kmedia.in</p>
+                  <p className="text-white/70 mb-2"><strong>Website:</strong> https://4kmedia.in</p>
+                  <p className="text-white/70"><strong>Last Updated:</strong> January 2024</p>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
-      </div>
-    </section>
-  </main>
-)
+      </section>
 
-export default Terms
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-[#f7e839]/10 to-[#f7e839]/5">
+        <div className="container mx-auto px-4">
+          <Reveal>
+            <div className="text-center max-w-4xl mx-auto">
+              <h2 className="text-white text-4xl md:text-5xl font-bold mb-6">
+                Questions About Our Terms?
+              </h2>
+              <p className="text-white/70 text-lg mb-8">
+                If you have any questions or need clarification about our terms of service, we're here to help.
+              </p>
+              <a 
+                href="/contact" 
+                className="bg-[#f7e839] text-black px-8 py-4 rounded-lg font-semibold hover:bg-[#f7e839]/90 transition-colors inline-block"
+              >
+                Contact Us
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+export default Terms;

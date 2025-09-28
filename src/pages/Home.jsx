@@ -9,7 +9,7 @@ const Home = () => (
     <Hero />
     
     {/* About Section */}
-    <section className="py-15 relative">
+    <section className="py-15 relative ">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0f141a] via-[#0f141a] to-[#1a2430]"></div>
       <div className="absolute top-20 right-10 w-72 h-72 bg-[#f7e839]/5 rounded-full blur-3xl"></div>
@@ -18,81 +18,20 @@ const Home = () => (
       <Reveal as="div" className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-8">
           <span className="inline-block text-sm font-medium uppercase tracking-wider bg-white/5 border border-white/10 px-6 py-3 rounded-full mb-6 shadow-lg">
-            About Our Agency
+            Who We Are
           </span>
           <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
             Strategic Digital <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Growth Partners</span>
           </h2>
           <p className="text-xl text-white/70 mb-4 font-light">Zero to viral, we make it happen.</p>
-          <p className="text-lg text-white/70 max-w-4xl mx-auto leading-relaxed">
-            We specialize in performance-driven digital solutions that deliver measurable results 
+          <p className="text-lg text-white/70 max-w-4xl mx-auto leading-relaxed mb-8">
+          At 4KMedia, we blend creativity and strategy to help brands shine in a noisy world. We're young, bold, and obsessed with results that matter..We specialize in performance-driven digital solutions that deliver measurable results 
             and sustainable growth for forward-thinking brands.
           </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-4">
-            <p className="text-white/80 text-lg leading-8 font-light">
-              4kMedia is a premier digital studio that transforms brands through data-informed 
-              strategies and cutting-edge execution. We bridge the gap between creative excellence 
-              and technical precision to drive meaningful business outcomes.
-            </p>
-            
-            <div className="space-y-4">
-              {[
-                {
-                  icon: '✓',
-                  color: 'bg-[#f7e839]',
-                  title: 'Conversion-Optimized Design'
-                },
-                {
-                  icon: '⚡',
-                  color: 'bg-[#22d3ee]',
-                  title: 'Technical Excellence'
-                },
-                {
-                  icon: '📈',
-                  color: 'bg-[#ec4899]',
-                  title: 'Continuous Optimization'
-                }
-              ].map((item, index) => (
-                <div key={index} className="group flex items-start gap-6 p-2 bg-white/5 rounded-xl border border-white/10 hover:border-[#f7e839]/30 transition-all duration-300 hover:transform hover:scale-[1.02]">
-                  <div className={`flex-shrink-0 w-9 h-9 rounded-lg ${item.color} flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300`}>
-                    <span className="text-black text-xs font-bold">{item.icon}</span>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mt-2 text-base">{item.title}</h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="/about" className="px-8 py-4 rounded-xl border border-white/20 text-white hover:border-[#f7e839] hover:bg-[#f7e839]/10 transition-all duration-300 font-medium text-center">
+          
+          <a href="/about" className="px-8 py-4 rounded-xl border border-white/20 text-white hover:border-[#f7e839] hover:bg-[#f7e839]/10 transition-all duration-300 font-medium text-center">
                 Know More About Us
               </a>
-              <a href="/contact" className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#f7e839] to-[#f7e839]/90 text-black hover:from-[#f7e839] hover:to-[#f7e839] transition-all duration-300 font-medium text-center hover:shadow-2xl hover:shadow-[#f7e839]/20 transform hover:scale-105">
-                Start Your Project
-              </a>
-            </div>
-          </div>
-          
-          <div className="relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
-              <img
-                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1200&auto=format&fit=crop"
-                alt="4kMedia Team Collaboration"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"></div>
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20">
-                  <h4 className="text-white font-bold text-lg mb-2">Proven Results</h4>
-                  <p className="text-white/80 text-sm">200+ successful projects delivered with exceptional client satisfaction</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </Reveal>
     </section>
@@ -258,110 +197,116 @@ const Home = () => (
       </Reveal>
     </section>
 
-    {/* Testimonials Section */}
+    {/* Brand Partners Section */}
     <section className="py-15 relative bg-gradient-to-br from-white/5 to-white/2">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-[#f7e839]/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#22d3ee]/5 rounded-full blur-3xl"></div>
-      </div>
-      
-      <Reveal as="div" className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-8">
-          <span className="inline-block text-sm font-medium uppercase tracking-wider bg-white/5 border border-white/10 px-6 py-3 rounded-full mb-6 shadow-lg">
-            Client Success Stories
-          </span>
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Trusted by <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Industry Leaders</span>
-          </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Discover how our strategic partnerships have driven exceptional results for businesses across sectors
-          </p>
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-[#f7e839]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#22d3ee]/5 rounded-full blur-3xl"></div>
         </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          <Testimonial 
-            name="Sarah Chen" 
-            role="Chief Marketing Officer" 
-            company="TechInnovate Solutions" 
-            quote="4kMedia transformed our digital presence with data-driven strategies that delivered a 3x ROI within six months. Their expertise in conversion optimization is unparalleled."
-            avatarUrl="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop"
-            delay={0}
-          />
-          <Testimonial 
-            name="Michael Rodriguez" 
-            role="CEO" 
-            company="Nexus Enterprises" 
-            quote="The team's attention to detail and strategic approach helped us scale our SaaS platform efficiently. A true partnership focused on our business objectives."
-            avatarUrl="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop"
-            delay={200}
-          />
-          <Testimonial 
-            name="Emily Thompson" 
-            role="Director of Growth" 
-            company="Global Retail Group" 
-            quote="From SEO to paid media, 4kMedia's integrated approach has consistently driven measurable growth and exceeded our performance expectations."
-            avatarUrl="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=400&auto=format&fit=crop"
-            delay={400}
-          />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-8">
+            <span className="inline-block text-sm font-medium uppercase tracking-wider bg-white/5 border border-white/10 px-6 py-3 rounded-full mb-6 shadow-lg">
+              Brand Partners
+            </span>
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Our <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Brand Partners</span>
+            </h2>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+              We collaborate with top brands to deliver innovative solutions and measurable growth.
+            </p>
+          </div>
+          <div className="overflow-hidden w-full">
+            {/* Smooth infinite marquee loop for brand logos */}
+            <div className="relative w-full overflow-hidden">
+              <div
+                className="marquee flex items-center gap-10"
+                style={{
+                  width: 'max-content',
+                  minWidth: '100%',
+                  willChange: 'transform'
+                }}
+              >
+                {/* Define the logo set */}
+                {[
+                  {
+                    src: "/assets/brandLogos/ManiorawhiteLogo.webp",
+                    alt: "Brand 1"
+                  },
+                  {
+                    src: "/assets/brandLogos/logo2.png",
+                    alt: "Brand 2"
+                  },
+                  {
+                    src: "/assets/brandLogos/logo3.png",
+                    alt: "Brand 3"
+                  }
+                ].map((logo, idx) => (
+                  <img
+                    key={`logo1-${idx}`}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 transition"
+                    draggable="false"
+                  />
+                ))}
+                {/* Duplicate set for seamless loop */}
+                {[
+                  {
+                    src: "/assets/brandLogos/ManiorawhiteLogo.webp",
+                    alt: "Brand 1"
+                  },
+                  {
+                    src: "/assets/brandLogos/logo2.png",
+                    alt: "Brand 2"
+                  },
+                  {
+                    src: "/assets/brandLogos/logo3.png",
+                    alt: "Brand 3"
+                  }
+                ].map((logo, idx) => (
+                  <img
+                    key={`logo2-${idx}`}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 transition"
+                    draggable="false"
+                  />
+                ))}
+              </div>
+            </div>
+            <style>
+              {`
+                .marquee {
+                  display: flex;
+                  flex-wrap: nowrap;
+                  animation: marquee 20s linear infinite;
+                }
+                @keyframes marquee {
+                  0% {
+                    transform: translateX(0);
+                  }
+                  100% {
+                    transform: translateX(-50%);
+                  }
+                }
+                /* Remove any margin or padding on the last image to avoid a gap */
+                .marquee img:last-child {
+                  margin-right: 0 !important;
+                }
+              `}
+            </style>
         </div>
-      </Reveal>
-    </section>
-
-    {/* FAQ Section */}
-    <section className="py-15 relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0f141a] to-[#1a2430]"></div>
-      
-      <Reveal as="div" className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-8">
-          <span className="inline-block text-sm font-medium uppercase tracking-wider bg-white/5 border border-white/10 px-6 py-3 rounded-full mb-6 shadow-lg">
-            Common Questions
-          </span>
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Frequently Asked <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Questions</span>
-          </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Get answers to the most common questions about our process, timelines, and partnership model
-          </p>
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {[
-            {
-              question: "What is the typical project timeline?",
-              answer: "Most engagements begin within 1-2 weeks post-discovery. Project duration varies based on scope, but we prioritize efficient execution without compromising quality."
-            },
-            {
-              question: "Which industries do you specialize in?",
-              answer: "We have extensive experience across e-commerce, SaaS, professional services, education, healthcare, and technology sectors, with tailored strategies for each vertical."
-            },
-            {
-              question: "Do you offer customized service packages?",
-              answer: "Yes, we develop bespoke solutions aligned with your specific business objectives, growth stage, and budget requirements for optimal results."
-            },
-            {
-              question: "How do you measure and report success?",
-              answer: "We establish clear KPIs upfront and provide comprehensive bi-weekly reports with transparent attribution and actionable insights for continuous improvement."
-            },
-            {
-              question: "What makes 4kMedia different from other agencies?",
-              answer: "Our unique blend of creative excellence, technical expertise, and data-driven strategies ensures we deliver measurable results that directly impact your bottom line."
-            },
-            {
-              question: "Do you provide ongoing support after project completion?",
-              answer: "Absolutely. We offer comprehensive maintenance and optimization packages to ensure your digital assets continue to perform at their peak."
+        {/* Marquee animation keyframes */}
+        <style>
+          {`
+            @keyframes marquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
             }
-          ].map((faq, index) => (
-            <FaqItem 
-              key={index}
-              question={faq.question} 
-              answer={faq.answer}
-              delay={index * 100}
-              defaultOpen={index === 0}
-            />
-          ))}
-        </div>
-      </Reveal>
-    </section>
+          `}
+        </style>
+      </section>
 
     {/* CTA Section */}
     <section className="py-15 relative bg-gradient-to-br from-white/5 to-white/2">

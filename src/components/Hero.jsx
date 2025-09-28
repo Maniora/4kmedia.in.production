@@ -57,7 +57,7 @@ const useTypewriter = (texts, speed = 100, delay = 2000) => {
 };
 
 const Hero = () => {
-  const projects = useCountUp(150, 2200);
+  const projects = useCountUp(10, 2200);
   const roi = useCountUp(12, 2200);
   const retention = useCountUp(98, 2200);
   const years = useCountUp(1, 700);
@@ -73,10 +73,7 @@ const Hero = () => {
 
   return (
     <section 
-      className="relative overflow-hidden py-12 md:py-15 min-h-[80vh] md:min-h-screen flex items-start md:items-center"
-      style={{
-        background: 'linear-gradient(135deg, #11181f 0%, #0d1117 100%)'
-      }}
+      className="relative overflow-hidden bg-gradient-to-br from-white/5 to-white/2 py-15 min-h-[80vh] md:min-h-screen flex items-start md:items-center"
     >
       {/* Background texture */}
       <div 
@@ -168,6 +165,20 @@ const Hero = () => {
 
           {/* Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-4 animate-fade-in delay-500">
+
+            
+            {/* Years Experience */}
+            <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
+              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
+                <svg width="48" height="48" className="md:w-[72px] md:h-[72px]" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="16" stroke="#d1d5db" strokeWidth="2"/>
+                  <path d="M24 14v10l6 4" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+          </div>
+              <div className="text-2xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-110">{years}+</div>
+              <div className="text-white/70 font-medium">Years Experience</div>
+        </div>
+
             {/* Projects */}
             <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
               <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
@@ -179,18 +190,7 @@ const Hero = () => {
               <div className="text-white/70 font-medium">Projects</div>
                 </div>
 
-            {/* Average ROI */}
-            {/* Average ROI */}
-            <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
-              <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
-                <svg width="48" height="48" className="md:w-[72px] md:h-[72px]" viewBox="0 0 48 48" fill="none">
-                  <path d="M8 36l10-10 6 6 16-16" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <div className="text-2xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-110">{roi}x</div>
-              <div className="text-white/70 font-medium">Average ROI</div>
-      </div>
-
+          
             {/* Client Retention */}
             <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
               <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
@@ -203,17 +203,17 @@ const Hero = () => {
               <div className="text-white/70 font-medium">Client Retention</div>
             </div>
 
-            {/* Years Experience */}
-            <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
+              {/* Average ROI */}
+              <div className="group rounded-2xl bg-black/30 border border-white/20 p-6 md:p-8 mb-6 md:mb-8 text-center hover:border-[#f7e839]/40 transition">
               <div className="mb-2 flex justify-center transition-transform duration-300 ease-out group-hover:scale-90">
                 <svg width="48" height="48" className="md:w-[72px] md:h-[72px]" viewBox="0 0 48 48" fill="none">
-                  <circle cx="24" cy="24" r="16" stroke="#d1d5db" strokeWidth="2"/>
-                  <path d="M24 14v10l6 4" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M8 36l10-10 6 6 16-16" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
           </div>
-              <div className="text-2xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-110">{years}+</div>
-              <div className="text-white/70 font-medium">Years Experience</div>
+              <div className="text-2xl md:text-4xl font-extrabold text-white mb-2 transition-transform duration-300 ease-out group-hover:scale-110">{roi}x</div>
+              <div className="text-white/70 font-medium">Average ROI</div>
             </div>
+
           </div>
 
           {/* CTA Buttons */}

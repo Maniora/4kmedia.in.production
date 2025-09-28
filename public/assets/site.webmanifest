@@ -1,19 +1,19 @@
 {
-  "name": "4kMedia",
+  "name": "4kMedia - Zero to viral, we make it happen",
   "short_name": "4kMedia",
-  "description": "Zero to viral, we make it happen",
+  "description": "Performance-driven digital marketing partner delivering predictable growth through integrated SEO, paid media, and content strategies.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#11181f",
   "theme_color": "#f7e839",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/assets/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/assets/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

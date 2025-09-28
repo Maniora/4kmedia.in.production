@@ -41,6 +41,7 @@ const ContactForm = () => {
         Get in Touch
       </h2>
 
+      {/* Name */}
       <div className="flex flex-col gap-2">
         <label className="text-sm text-white/70">Your Name *</label>
         <input
@@ -52,6 +53,7 @@ const ContactForm = () => {
         />
       </div>
 
+      {/* Email */}
       <div className="flex flex-col gap-2">
         <label className="text-sm text-white/70">Email Address *</label>
         <input
@@ -63,17 +65,44 @@ const ContactForm = () => {
         />
       </div>
 
+      {/* Phone Number */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-white/70">Phone Number</label>
+        <label className="text-sm text-white/70">Phone Number *</label>
         <input
           type="tel"
           name="user_phone"
           placeholder="+91 99899 58238"
           className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          required
         />
       </div>
 
+      {/* Location */}
       <div className="flex flex-col gap-2">
+        <label className="text-sm text-white/70">Location *</label>
+        <input
+          type="text"
+          name="user_location"
+          placeholder="Hyderabad, Telangana"
+          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          required
+        />
+      </div>
+
+      {/* Website Link */}
+      <div className="flex flex-col gap-2 md:col-span-2">
+        <label className="text-sm text-white/70">Website Link *</label>
+        <input
+          type="url"
+          name="user_website"
+          placeholder="https://yourwebsite.com"
+          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          required
+        />
+      </div>
+
+      {/* Service */}
+      <div className="flex flex-col gap-2 md:col-span-2">
         <label className="text-sm text-white/70">Service Interested *</label>
         <select
           name="service"
@@ -95,8 +124,9 @@ const ContactForm = () => {
         </select>
       </div>
 
+      {/* Message */}
       <div className="md:col-span-2 flex flex-col gap-2">
-        <label className="text-sm text-white/70">Project Details *</label>
+        <label className="text-sm text-white/70">Message *</label>
         <textarea
           name="message"
           placeholder="Tell us about your project, goals, and how we can help you achieve success..."
@@ -106,6 +136,7 @@ const ContactForm = () => {
         />
       </div>
 
+      {/* Submit Button */}
       <div className="md:col-span-2 flex justify-center">
         <button
           type="submit"

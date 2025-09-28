@@ -46,7 +46,7 @@ const Footer = () => (
                 alt="4kMedia logo" 
                 className="h-20 w-20 rounded-lg"
               />
-              <span className="text-2xl font-bold text-white">4kMedia</span>
+              <span className="text-2xl font-bold text-white">4KMEDIA</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-xs text-center md:text-left">
               <span className='text-[#f7e839]'>
