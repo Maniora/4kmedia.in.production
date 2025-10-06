@@ -249,35 +249,35 @@ const Services = () => {
               id: 'smm',
               t: 'Social Media Marketing',
               d: 'Content strategy, community management, and paid amplification across social platforms.',
-              img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop',
+              img: '/assets/images/smm.jpg',
               pts: ['Strategy & content pillars', 'Community management', 'Paid boosts & partnerships']
             },
             {
               id: 'website-development',
               t: 'Website Development',
               d: 'Fast, accessible, SEO-friendly websites with modern stacks and CMS options.',
-              img: 'https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1200&auto=format&fit=crop',
+              img: '/assets/images/webdevelopment.jpg',
               pts: ['UX wireframes & components', 'Responsive builds', 'On-page SEO & analytics']
             },
             {
               id: 'ui-ux',
               t: 'UI/UX Design',
               d: 'Human-centered product design—research, prototypes, and design systems that convert.',
-              img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop',
+              img: '/assets/images/uiux.jpg',
               pts: ['User research & flows', 'High-fidelity designs', 'Design systems & handoff']
             },
             {
               id: 'video-production',
               t: 'Video Production',
               d: 'Brand films, reels, and ad creatives from scripting to distribution.',
-              img: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop',
+              img: '/assets/images/videopro.jpg',
               pts: ['Scripting & storyboarding', 'Shoots & edits', 'Captions & distribution']
             },
             {
               id: 'logo-design',
               t: 'Logo Design',
               d: 'Distinctive brand identities with scalable logo systems and guidelines.',
-              img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop',
+              img: '/assets/images/logo.jpg',
               pts: ['Brand discovery', 'Logo concepts & revisions', 'Brand guidelines & assets']
             }
   ];

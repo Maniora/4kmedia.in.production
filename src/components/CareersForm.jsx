@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import Toast from './Toast'
 import emailjs from '@emailjs/browser'
 
 const ROLES = [
@@ -15,6 +16,12 @@ const CareersForm = () => {
   const formRef = useRef(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
+  const [toast, setToast] = useState({ open: false, message: '', variant: 'success' })
+
+  const sanitizePhoneInput = (e) => {
+    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 10)
+    e.target.value = digitsOnly
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,18 +30,35 @@ const CareersForm = () => {
     setIsSubmitting(true)
     setSubmitStatus(null)
     
+    // Validate required EmailJS env variables at runtime
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CAREERS
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('Missing EmailJS configuration. Check .env variables.', {
+        serviceIdPresent: !!serviceId,
+        templateIdPresent: !!templateId,
+        publicKeyPresent: !!publicKey,
+      })
+      setToast({ open: true, message: 'Email service not configured. Please try later.', variant: 'error' })
+      setIsSubmitting(false)
+      return
+    }
+    
     try {
       await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CAREERS,
+        serviceId,
+        templateId,
         formRef.current,
-        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+        { publicKey }
       )
       setSubmitStatus('success')
       formRef.current.reset()
+      setToast({ open: true, message: 'Application submitted successfully!', variant: 'success' })
     } catch (err) {
       console.error('EmailJS Error:', err)
       setSubmitStatus('error')
+      setToast({ open: true, message: 'Failed to submit application. Please try again.', variant: 'error' })
     } finally {
       setIsSubmitting(false)
     }
@@ -42,6 +66,8 @@ const CareersForm = () => {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+      {/* Recipient for EmailJS pulled from env */}
+      <input type="hidden" name="to_email" value={import.meta.env.VITE_CAREERS_EMAIL} />
       <label className="space-y-1 block w-full">
         <span className="text-xs text-white/80 tracking-wide">FULL NAME <span className="text-[#f7e839]">*</span></span>
         <input name="full_name" type="text" placeholder="Enter your full name" className="w-full p-3 border border-white/10 bg-transparent text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50" required />
@@ -53,7 +79,7 @@ const CareersForm = () => {
         </label>
         <label className="space-y-1 block w-full">
           <span className="text-xs text-white/80 tracking-wide">PHONE NUMBER <span className="text-[#f7e839]">*</span></span>
-          <input name="phone" type="tel" placeholder="+91 98765 43210" className="w-full p-3 border border-white/10 bg-transparent text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50" required />
+          <input name="phone" type="tel" placeholder="9989958238" className="w-full p-3 border border-white/10 bg-transparent text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50" inputMode="numeric" autoComplete="tel" pattern="\d{10}" maxLength={10} onInput={sanitizePhoneInput} title="Please enter a valid 10-digit phone number" required />
         </label>
       </div>
       <label className="space-y-1 block w-full">
@@ -77,8 +103,8 @@ const CareersForm = () => {
         </select>
       </label>
       <label className="space-y-1 block w-full">
-        <span className="text-xs text-white/80 tracking-wide">UPLOAD RESUME (PDF/DOC) <span className="text-[#f7e839]">*</span></span>
-        <input name="resume" type="file" accept=".pdf,.doc,.docx" className="w-full file:mr-4 file:rounded file:border-0 file:bg-[#f7e839] file:text-[#11181f] file:font-semibold file:px-4 file:py-2 p-2 border border-white/10 bg-transparent text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50" required />
+        <span className="text-xs text-white/80 tracking-wide">RESUME LINK (Google Drive/Dropbox) <span className="text-[#f7e839]">*</span></span>
+        <input name="resume" type="url" placeholder="https://drive.google.com/your-resume" className="w-full p-3 border border-white/10 bg-transparent text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50" required />
       </label>
       <div className="pt-1">
         <button 
@@ -100,17 +126,7 @@ const CareersForm = () => {
         </button>
       </div>
       
-      {submitStatus === 'success' && (
-        <div className="text-center p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-          <p className="text-green-400 font-medium">✅ Application submitted successfully! We'll review your application and get back to you soon.</p>
-        </div>
-      )}
-      
-      {submitStatus === 'error' && (
-        <div className="text-center p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-          <p className="text-red-400 font-medium">❌ Failed to submit application. Please try again or contact us directly.</p>
-        </div>
-      )}
+      <Toast open={toast.open} onClose={() => setToast((t) => ({ ...t, open: false }))} message={toast.message} variant={toast.variant} />
     </form>
   )
 }

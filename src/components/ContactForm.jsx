@@ -1,10 +1,17 @@
 import { useRef, useState } from "react";
+import Toast from "./Toast";
 import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
   const formRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [toast, setToast] = useState({ open: false, message: "", variant: "success" });
+
+  const sanitizePhoneInput = (e) => {
+    const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 10);
+    e.target.value = digitsOnly;
+  };
 
   const sendEmail = async (e) => {
     e.preventDefault();
@@ -13,18 +20,35 @@ const ContactForm = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Validate required EmailJS env variables at runtime
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CONTACT;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("Missing EmailJS configuration. Check .env variables.", {
+        serviceIdPresent: !!serviceId,
+        templateIdPresent: !!templateId,
+        publicKeyPresent: !!publicKey,
+      });
+      setToast({ open: true, message: "Email service not configured. Please try later.", variant: "error" });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CONTACT,
+        serviceId,
+        templateId,
         formRef.current,
-        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+        { publicKey }
       );
       setSubmitStatus("success");
       formRef.current.reset();
+      setToast({ open: true, message: "Message sent successfully!", variant: "success" });
     } catch (err) {
       console.error("EmailJS Error:", err);
       setSubmitStatus("error");
+      setToast({ open: true, message: "Failed to send message. Please try again.", variant: "error" });
     } finally {
       setIsSubmitting(false);
     }
@@ -40,6 +64,9 @@ const ContactForm = () => {
       <h2 className="md:col-span-2 text-2xl font-semibold text-white mb-4 text-center">
         Get in Touch
       </h2>
+
+      {/* Recipient for EmailJS pulled from env */}
+      <input type="hidden" name="to_email" value={import.meta.env.VITE_CONTACT_EMAIL} />
 
       {/* Name */}
       <div className="flex flex-col gap-2">
@@ -71,8 +98,14 @@ const ContactForm = () => {
         <input
           type="tel"
           name="user_phone"
-          placeholder="+91 99899 58238"
+          placeholder="9989958238"
           className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          inputMode="numeric"
+          autoComplete="tel"
+          pattern="\d{10}"
+          maxLength={10}
+          onInput={sanitizePhoneInput}
+          title="Please enter a valid 10-digit phone number"
           required
         />
       </div>
@@ -189,21 +222,12 @@ const ContactForm = () => {
         </button>
       </div>
 
-      {submitStatus === "success" && (
-        <div className="md:col-span-2 text-center p-4 bg-green-600/10 border border-green-600/20 rounded-lg mt-4">
-          <p className="text-green-400 font-medium">
-            ✅ Message sent successfully! We'll get back to you within 24 hours.
-          </p>
-        </div>
-      )}
-
-      {submitStatus === "error" && (
-        <div className="md:col-span-2 text-center p-4 bg-red-600/10 border border-red-600/20 rounded-lg mt-4">
-          <p className="text-red-400 font-medium">
-            ❌ Failed to send message. Please try again or contact us directly.
-          </p>
-        </div>
-      )}
+      <Toast
+        open={toast.open}
+        onClose={() => setToast((t) => ({ ...t, open: false }))}
+        message={toast.message}
+        variant={toast.variant}
+      />
     </form>
   );
 };

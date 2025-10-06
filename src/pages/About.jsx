@@ -160,7 +160,7 @@ const About = () => (
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   className="w-full aspect-[4/3] object-cover" 
-                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" 
+                  src="/assets/images/aboutus.jpg" 
                   alt="4kMedia team collaboration" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
