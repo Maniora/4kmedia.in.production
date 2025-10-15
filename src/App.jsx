@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import RouteScrollTop from './components/RouteScrollTop'
+import Analytics from './components/Analytics'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -15,6 +16,7 @@ function App() {
     <div className="min-h-screen flex flex-col bg-[#11181f] text-white">
       <Header />
       <RouteScrollTop />
+      <Analytics />
       <div className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
