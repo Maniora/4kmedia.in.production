@@ -2,20 +2,83 @@ import { useRef, useState } from "react";
 import Toast from "./Toast";
 import emailjs from "@emailjs/browser";
 
+// Validation helpers
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const isValidPhone = (phone) => /^\d{10}$/.test(phone);
+const isValidUrl = (url) => {
+  try {
+    const tlds = [
+      ".com",".in",".net",".org",".co",".io",".me",".site",".app",".ai",".dev",
+      ".info",".biz",".xyz",".us",".ca",".uk",".au",".gov",".edu"
+    ];
+    let u = new URL(url);
+    return tlds.some((tld) => u.hostname.endsWith(tld));
+  } catch {
+    return false;
+  }
+};
+
 const ContactForm = () => {
   const formRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [toast, setToast] = useState({ open: false, message: "", variant: "success" });
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const sanitizePhoneInput = (e) => {
     const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 10);
     e.target.value = digitsOnly;
   };
 
+  const validateFields = (form) => {
+    const errors = {};
+
+    // user_name
+    const name = form.user_name.value.trim();
+    if (!name) errors.user_name = "Your Name is required.";
+
+    // user_email
+    const email = form.user_email.value.trim();
+    if (!isValidEmail(email)) errors.user_email = "Please enter a valid email address.";
+
+    // user_phone
+    const phone = form.user_phone.value.trim();
+    if (!isValidPhone(phone)) errors.user_phone = "Enter a valid 10-digit phone number.";
+
+    // user_location
+    const location = form.user_location.value.trim();
+    if (!location) errors.user_location = "Location is required.";
+
+    // user_website
+    const website = form.user_website.value.trim();
+    if (!isValidUrl(website)) errors.user_website = "Website link should be a valid URL ending in .com, .in, etc.";
+
+    // service
+    const service = form.service.value;
+    if (!service) errors.service = "Please select a service.";
+
+    // message
+    const message = form.message.value.trim();
+    if (!message) errors.message = "Message is required.";
+
+    return errors;
+  };
+
+  const getFieldErrorClass = (field) =>
+    fieldErrors[field]
+      ? "border-red-500 focus:ring-red-400"
+      : "border-white/20 focus:ring-[#f7e839]/50";
+
   const sendEmail = async (e) => {
     e.preventDefault();
     if (!formRef.current) return;
+
+    const errors = validateFields(formRef.current);
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) {
+      setToast({ open: true, message: Object.values(errors)[0], variant: "error" });
+      return;
+    }
 
     setIsSubmitting(true);
     setSubmitStatus(null);
@@ -45,6 +108,7 @@ const ContactForm = () => {
       setSubmitStatus("success");
       formRef.current.reset();
       setToast({ open: true, message: "Message sent successfully!", variant: "success" });
+      setFieldErrors({});
     } catch (err) {
       console.error("EmailJS Error:", err);
       setSubmitStatus("error");
@@ -60,6 +124,7 @@ const ContactForm = () => {
       onSubmit={sendEmail}
       className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto bg-[#1a1f26] p-8 rounded-2xl shadow-lg border border-white/10"
       id="contact-form"
+      noValidate
     >
       <h2 className="md:col-span-2 text-2xl font-semibold text-white mb-4 text-center">
         Get in Touch
@@ -75,9 +140,10 @@ const ContactForm = () => {
           type="text"
           name="user_name"
           placeholder="John Doe"
-          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          className={`p-3 rounded-lg bg-white/10 text-white border placeholder-white/50 focus:outline-none focus:ring-2 transition ${getFieldErrorClass("user_name")}`}
           required
         />
+        {fieldErrors.user_name && <span className="text-xs text-red-500">{fieldErrors.user_name}</span>}
       </div>
 
       {/* Email */}
@@ -87,9 +153,10 @@ const ContactForm = () => {
           type="email"
           name="user_email"
           placeholder="your@email.com"
-          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          className={`p-3 rounded-lg bg-white/10 text-white border placeholder-white/50 focus:outline-none focus:ring-2 transition ${getFieldErrorClass("user_email")}`}
           required
         />
+        {fieldErrors.user_email && <span className="text-xs text-red-500">{fieldErrors.user_email}</span>}
       </div>
 
       {/* Phone Number */}
@@ -99,7 +166,7 @@ const ContactForm = () => {
           type="tel"
           name="user_phone"
           placeholder="9989958238"
-          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          className={`p-3 rounded-lg bg-white/10 text-white border placeholder-white/50 focus:outline-none focus:ring-2 transition ${getFieldErrorClass("user_phone")}`}
           inputMode="numeric"
           autoComplete="tel"
           pattern="\d{10}"
@@ -108,6 +175,7 @@ const ContactForm = () => {
           title="Please enter a valid 10-digit phone number"
           required
         />
+        {fieldErrors.user_phone && <span className="text-xs text-red-500">{fieldErrors.user_phone}</span>}
       </div>
 
       {/* Location */}
@@ -117,9 +185,10 @@ const ContactForm = () => {
           type="text"
           name="user_location"
           placeholder="Hyderabad, Telangana"
-          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          className={`p-3 rounded-lg bg-white/10 text-white border placeholder-white/50 focus:outline-none focus:ring-2 transition ${getFieldErrorClass("user_location")}`}
           required
         />
+        {fieldErrors.user_location && <span className="text-xs text-red-500">{fieldErrors.user_location}</span>}
       </div>
 
       {/* Website Link */}
@@ -129,9 +198,10 @@ const ContactForm = () => {
           type="url"
           name="user_website"
           placeholder="https://yourwebsite.com"
-          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          className={`p-3 rounded-lg bg-white/10 text-white border placeholder-white/50 focus:outline-none focus:ring-2 transition ${getFieldErrorClass("user_website")}`}
           required
         />
+        {fieldErrors.user_website && <span className="text-xs text-red-500">{fieldErrors.user_website}</span>}
       </div>
 
       {/* Service */}
@@ -141,7 +211,7 @@ const ContactForm = () => {
           name="service"
           required
           defaultValue=""
-          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          className={`p-3 rounded-lg bg-white/10 text-white border focus:outline-none focus:ring-2 transition ${getFieldErrorClass("service")}`}
         >
           <option value="" disabled className="bg-[#1a1f26] text-white">
             Select a service
@@ -155,6 +225,7 @@ const ContactForm = () => {
             Social Media Management
           </option>
         </select>
+        {fieldErrors.service && <span className="text-xs text-red-500">{fieldErrors.service}</span>}
       </div>
 
       {/* Message */}
@@ -164,9 +235,10 @@ const ContactForm = () => {
           name="message"
           placeholder="Tell us about your project, goals, and how we can help you achieve success..."
           rows="6"
-          className="p-3 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#f7e839]/50 transition"
+          className={`p-3 rounded-lg bg-white/10 text-white border placeholder-white/50 focus:outline-none focus:ring-2 transition ${getFieldErrorClass("message")}`}
           required
         />
+        {fieldErrors.message && <span className="text-xs text-red-500">{fieldErrors.message}</span>}
       </div>
 
       {/* Submit Button */}
