@@ -53,9 +53,9 @@ const Header = () => {
         <div className="flex h-16 lg:h-20 items-center justify-between relative">
           
           {/* Animated Background Element */}
-          <div className={`absolute inset-0 bg-gradient-to-r from-[#f7e839]/5 to-transparent opacity-0 transition-opacity duration-500 ${
+          {/* <div className={`absolute inset-0 bg-gradient-to-r from-[#f7e839]/5 to-transparent opacity-0 transition-opacity duration-500 ${
             scrolled ? 'opacity-100' : ''
-          }`} />
+          }`} /> */}
 
           {/* Logo with Enhanced Animation */}
           <Link 
@@ -74,7 +74,7 @@ const Header = () => {
               <img
                 src="/assets/logo2.png"
                 alt="4KMEDIA - Premium Digital Agency"
-                className="relative h-12 w-12 lg:h-14 lg:w-14 rounded-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 border-2 border-[#f7e839]/20"
+                className="relative h-12 w-auto px-2 lg:h-14 lg:w-auto rounded-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 border-2 border-[#f7e839]/20"
               />
               
               {/* Floating particles */}

@@ -44,7 +44,7 @@ const Footer = () => (
               <img 
                 src="/assets/logo2.png" 
                 alt="4kMedia logo" 
-                className="h-20 w-20 rounded-lg"
+                className="h-20 w-auto rounded-lg"
               />
               <span className="text-2xl font-bold text-white">4KMEDIA</span>
             </div>
