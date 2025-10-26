@@ -210,7 +210,7 @@ const JobModal = ({ open, onClose, job }) => {
           )}
 
           {/* CTA Button */}
-          <div className="pt-4">
+          {/* <div className="pt-4">
             <a
               href="#apply"
               className="inline-flex items-center justify-center gap-2 w-full px-8 py-4 rounded-lg bg-gradient-to-r from-[#f7e839] to-[#f5d428] text-[#11181f] font-semibold hover:shadow-lg transition-all duration-200"
@@ -220,7 +220,7 @@ const JobModal = ({ open, onClose, job }) => {
                 <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

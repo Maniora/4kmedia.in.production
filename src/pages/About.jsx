@@ -39,7 +39,7 @@ function useCountUp(to, duration = 1500) {
 const StatsSection = () => {
   // Stats config
   const stats = [
-    { n: 1, suffix: '+ Years', l: 'Industry Experience', d: 'Deep expertise in digital transformation', duration: 700 },
+    { n: 4, suffix: '+ Years', l: 'Industry Experience', d: 'Deep expertise in digital transformation', duration: 2200 },
     { n: 10, suffix: '+', l: 'Projects Delivered', d: 'Successful campaigns across various industries', duration: 2200 },
     { n: 98, suffix: '%', l: 'Client Retention', d: 'Long-term partnerships built on trust', duration: 2200 },
     { n: 12, suffix: 'x', l: 'Average ROI', d: 'Return on investment for our clients', duration: 2200 },

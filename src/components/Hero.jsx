@@ -60,7 +60,7 @@ const Hero = () => {
   const projects = useCountUp(10, 2200);
   const roi = useCountUp(12, 2200);
   const retention = useCountUp(98, 2200);
-  const years = useCountUp(4, 900);
+  const years = useCountUp(4, 2200);
 
   const typingTexts = [
     "Build. Market. Grow.",
