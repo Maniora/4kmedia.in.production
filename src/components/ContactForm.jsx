@@ -216,14 +216,15 @@ const ContactForm = () => {
           <option value="" disabled className="bg-[#1a1f26] text-white">
             Select a service
           </option>
-          <option className="bg-[#1a1f26] text-white">SEO</option>
-          <option className="bg-[#1a1f26] text-white">Paid Media</option>
-          <option className="bg-[#1a1f26] text-white">Content Studio</option>
-          <option className="bg-[#1a1f26] text-white">Analytics & CRO</option>
-          <option className="bg-[#1a1f26] text-white">Web Design & Build</option>
           <option className="bg-[#1a1f26] text-white">
-            Social Media Management
+            Social Media Marketing
           </option>
+          <option className="bg-[#1a1f26] text-white">Website Development</option>
+          <option className="bg-[#1a1f26] text-white">UI/UX Design</option>
+          <option className="bg-[#1a1f26] text-white">Video Production</option>
+          <option className="bg-[#1a1f26] text-white">Logo Design</option>
+          <option className="bg-[#1a1f26] text-white">Event Organization</option>
+          <option className="bg-[#1a1f26] text-white">Other</option>
         </select>
         {fieldErrors.service && <span className="text-xs text-red-500">{fieldErrors.service}</span>}
       </div>

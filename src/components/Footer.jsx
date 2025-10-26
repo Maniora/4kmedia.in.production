@@ -184,7 +184,7 @@ const Footer = () => (
           </Reveal>
 
           {/* Developer Credit */}
-          <Reveal as="div" delay={200} className="text-center md:text-left">
+          {/* <Reveal as="div" delay={200} className="text-center md:text-left">
             <p className="text-white/60 text-sm">
               Developed with ❤️ by{' '}
               <a 
@@ -196,7 +196,7 @@ const Footer = () => (
                 Maniora
               </a>
             </p>
-          </Reveal>
+          </Reveal> */}
         </div>
       </div>
     </div>

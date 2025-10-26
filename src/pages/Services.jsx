@@ -279,6 +279,13 @@ const Services = () => {
               d: 'Distinctive brand identities with scalable logo systems and guidelines.',
               img: '/assets/images/logo.jpg',
               pts: ['Brand discovery', 'Logo concepts & revisions', 'Brand guidelines & assets']
+            },
+            {
+              id: 'event-organization',
+              t: 'Event Organization',
+              d: 'End-to-end event planning and management to engage your audience.',
+              img: '/assets/images/event.jpg',
+              pts: ['Event planning & management', 'Brand activations & partnerships', 'Audience engagement & insights']
             }
   ];
 

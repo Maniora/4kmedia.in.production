@@ -207,86 +207,80 @@ const About = () => (
               We collaborate with top brands to deliver innovative solutions and measurable growth.
             </p>
           </div>
-          <div className="overflow-hidden w-full">
-            {/* Smooth infinite marquee loop for brand logos */}
-            <div className="relative w-full overflow-hidden">
-              <div
-                className="marquee flex items-center gap-10"
-                style={{
-                  width: 'max-content',
-                  minWidth: '100%',
-                  willChange: 'transform'
-                }}
-              >
-                {/* Define the logo set */}
-                {[
-                  {
-                    src: "/assets/brandLogos/ManiorawhiteLogo.webp",
-                    alt: "Brand 1"
-                  },
-                  {
-                    src: "/assets/brandLogos/logo2.png",
-                    alt: "Brand 2"
-                  },
-                  {
-                    src: "/assets/brandLogos/logo3.png",
-                    alt: "Brand 3"
-                  }
-                ].map((logo, idx) => (
-                  <img
-                    key={`logo1-${idx}`}
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 transition"
-                    draggable="false"
-                  />
-                ))}
-                {/* Duplicate set for seamless loop */}
-                {[
-                  {
-                    src: "/assets/brandLogos/ManiorawhiteLogo.webp",
-                    alt: "Brand 1"
-                  },
-                  {
-                    src: "/assets/brandLogos/logo2.png",
-                    alt: "Brand 2"
-                  },
-                  {
-                    src: "/assets/brandLogos/logo3.png",
-                    alt: "Brand 3"
-                  }
-                ].map((logo, idx) => (
-                  <img
-                    key={`logo2-${idx}`}
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 transition"
-                    draggable="false"
-                  />
-                ))}
-              </div>
-            </div>
-            <style>
-              {`
-                .marquee {
-                  display: flex;
-                  flex-wrap: nowrap;
-                  animation: marquee 20s linear infinite;
+          <div className="relative w-full overflow-hidden">
+          <div
+            className="brand-marquee flex gap-10 items-center"
+            style={{
+              width: 'max-content',
+              minWidth: '100%',
+              willChange: 'transform'
+            }}
+          >
+            {/* Double logo sets for seamless infinite scroll */}
+            {[
+              {
+                src: "/assets/brandLogos/ManiorawhiteLogo.webp",
+                alt: "Brand 1"
+              },
+              {
+                src: "/assets/brandLogos/hustleLogo.avif",
+                alt: "Brand 2"
+              },
+              {
+                src: "/assets/brandLogos/zeck.png",
+                alt: "Brand 3"
+              },
+              {
+                src: "/assets/brandLogos/auxo.avif",
+                alt: "Brand 4"
+              }
+            ].concat([
+              {
+                src: "/assets/brandLogos/ManiorawhiteLogo.webp",
+                alt: "Brand 1"
+              },
+              {
+                src: "/assets/brandLogos/hustleLogo.avif",
+                alt: "Brand 2"
+              },
+              {
+                src: "/assets/brandLogos/zeck.png",
+                alt: "Brand 3"
+              },
+              {
+                src: "/assets/brandLogos/auxo.avif",
+                alt: "Brand 4"
+              }
+            ]).map((logo, idx) => (
+              <img
+                key={idx}
+                src={logo.src}
+                alt={logo.alt}
+                className="h-20 w-auto object-contain opacity-80 transition"
+                draggable="false"
+              />
+            ))}
+          </div>
+          <style>
+            {`
+              .brand-marquee {
+                display: flex;
+                flex-wrap: nowrap;
+                animation: brand-marquee-scroll 20s linear infinite;
+              }
+              @keyframes brand-marquee-scroll {
+                0% {
+                  transform: translateX(0);
                 }
-                @keyframes marquee {
-                  0% {
-                    transform: translateX(0);
-                  }
-                  100% {
-                    transform: translateX(-50%);
-                  }
+                100% {
+                  transform: translateX(-50%);
                 }
-                /* Remove any margin or padding on the last image to avoid a gap */
-                .marquee img:last-child {
-                  margin-right: 0 !important;
-                }
-              `}
-            </style>
+              }
+              .brand-marquee img:last-child {
+                margin-right: 0 !important;
+              }
+            `}
+          </style>
         </div>
       </div>
         {/* Marquee animation keyframes */}

@@ -84,10 +84,15 @@ const Home = () => (
               description: "Distinctive brand identities with scalable logo systems and guidelines.",
               icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
             },
+            // {
+            //   title: "SEO Optimization", 
+            //   description: "Search engine optimization to increase visibility and organic traffic.",
+            //   icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            // },
             {
-              title: "SEO Optimization", 
-              description: "Search engine optimization to increase visibility and organic traffic.",
-              icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              title: "Event Organization",
+              description: "Complete event planning and management for engaging brand experiences.",
+              icon: "M8 7V3h8v4M3 11h18M5 11v10a2 2 0 002 2h10a2 2 0 002-2V11"
             }
           ].map((service, index) => (
             <div key={index} className="group relative">
@@ -101,12 +106,20 @@ const Home = () => (
                 <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
                 <p className="text-white/70 leading-7">{service.description}</p>
                 <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-[#f7e839] text-sm font-medium flex items-center gap-2">
+                  <a
+                    href="/services"
+                    className="text-[#f7e839] text-sm font-medium flex items-center gap-2 hover:underline transition-colors"
+                    onClick={e => {
+                      e.preventDefault();
+                      window.history.pushState({}, '', '/services');
+                      window.dispatchEvent(new PopStateEvent('popstate'));
+                    }}
+                  >
                     Learn more
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -198,115 +211,95 @@ const Home = () => (
     </section>
 
     {/* Brand Partners Section */}
-    <section className="py-15 relative bg-gradient-to-br from-white/5 to-white/2">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-[#f7e839]/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#22d3ee]/5 rounded-full blur-3xl"></div>
+    <div className="bg-gradient-to-br from-white/5 to-white/2 relative py-15 overflow-hidden mt-12">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-[#f7e839]/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#22d3ee]/5 rounded-full blur-3xl"></div>
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-4xl font-bold text-center text-white mb-6">
+          Our <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Brand Partners</span>
+        </h2>
+        <div className="text-center mb-6 text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+          We collaborate with top brands to deliver innovative solutions and measurable growth.
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-8">
-            <span className="inline-block text-sm font-medium uppercase tracking-wider bg-white/5 border border-white/10 px-6 py-3 rounded-full mb-6 shadow-lg">
-              Brand Partners
-            </span>
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Our <span className="bg-gradient-to-r from-[#f7e839] to-[#22d3ee] bg-clip-text text-transparent">Brand Partners</span>
-            </h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              We collaborate with top brands to deliver innovative solutions and measurable growth.
-            </p>
+        <div className="relative w-full overflow-hidden">
+          <div
+            className="brand-marquee flex gap-10 items-center"
+            style={{
+              width: 'max-content',
+              minWidth: '100%',
+              willChange: 'transform'
+            }}
+          >
+            {/* Double logo sets for seamless infinite scroll */}
+            {[
+              {
+                src: "/assets/brandLogos/ManiorawhiteLogo.webp",
+                alt: "Brand 1"
+              },
+              {
+                src: "/assets/brandLogos/hustleLogo.avif",
+                alt: "Brand 2"
+              },
+              {
+                src: "/assets/brandLogos/zeck.png",
+                alt: "Brand 3"
+              },
+              {
+                src: "/assets/brandLogos/auxo.avif",
+                alt: "Brand 4"
+              }
+            ].concat([
+              {
+                src: "/assets/brandLogos/ManiorawhiteLogo.webp",
+                alt: "Brand 1"
+              },
+              {
+                src: "/assets/brandLogos/hustleLogo.avif",
+                alt: "Brand 2"
+              },
+              {
+                src: "/assets/brandLogos/zeck.png",
+                alt: "Brand 3"
+              },
+              {
+                src: "/assets/brandLogos/auxo.avif",
+                alt: "Brand 4"
+              }
+            ]).map((logo, idx) => (
+              <img
+                key={idx}
+                src={logo.src}
+                alt={logo.alt}
+                className="h-20 w-auto object-contain opacity-80 transition"
+                draggable="false"
+              />
+            ))}
           </div>
-          <div className="overflow-hidden w-full">
-            {/* Smooth infinite marquee loop for brand logos */}
-            <div className="relative w-full overflow-hidden">
-              <div
-                className="marquee flex items-center gap-10"
-                style={{
-                  width: 'max-content',
-                  minWidth: '100%',
-                  willChange: 'transform'
-                }}
-              >
-                {/* Define the logo set */}
-                {[
-                  {
-                    src: "/assets/brandLogos/ManiorawhiteLogo.webp",
-                    alt: "Brand 1"
-                  },
-                  {
-                    src: "/assets/brandLogos/logo2.png",
-                    alt: "Brand 2"
-                  },
-                  {
-                    src: "/assets/brandLogos/logo3.png",
-                    alt: "Brand 3"
-                  }
-                ].map((logo, idx) => (
-                  <img
-                    key={`logo1-${idx}`}
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 transition"
-                    draggable="false"
-                  />
-                ))}
-                {/* Duplicate set for seamless loop */}
-                {[
-                  {
-                    src: "/assets/brandLogos/ManiorawhiteLogo.webp",
-                    alt: "Brand 1"
-                  },
-                  {
-                    src: "/assets/brandLogos/logo2.png",
-                    alt: "Brand 2"
-                  },
-                  {
-                    src: "/assets/brandLogos/logo3.png",
-                    alt: "Brand 3"
-                  }
-                ].map((logo, idx) => (
-                  <img
-                    key={`logo2-${idx}`}
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 transition"
-                    draggable="false"
-                  />
-                ))}
-              </div>
-            </div>
-            <style>
-              {`
-                .marquee {
-                  display: flex;
-                  flex-wrap: nowrap;
-                  animation: marquee 20s linear infinite;
+          <style>
+            {`
+              .brand-marquee {
+                display: flex;
+                flex-wrap: nowrap;
+                animation: brand-marquee-scroll 20s linear infinite;
+              }
+              @keyframes brand-marquee-scroll {
+                0% {
+                  transform: translateX(0);
                 }
-                @keyframes marquee {
-                  0% {
-                    transform: translateX(0);
-                  }
-                  100% {
-                    transform: translateX(-50%);
-                  }
+                100% {
+                  transform: translateX(-50%);
                 }
-                /* Remove any margin or padding on the last image to avoid a gap */
-                .marquee img:last-child {
-                  margin-right: 0 !important;
-                }
-              `}
-            </style>
+              }
+              .brand-marquee img:last-child {
+                margin-right: 0 !important;
+              }
+            `}
+          </style>
         </div>
-        </div>
-        {/* Marquee animation keyframes */}
-        <style>
-          {`
-            @keyframes marquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-          `}
-        </style>
-      </section>
+      </div>
+    </div>
 
     {/* CTA Section */}
     <section className="py-15 relative bg-gradient-to-br from-white/5 to-white/2">

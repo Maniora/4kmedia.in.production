@@ -60,7 +60,7 @@ const Hero = () => {
   const projects = useCountUp(10, 2200);
   const roi = useCountUp(12, 2200);
   const retention = useCountUp(98, 2200);
-  const years = useCountUp(1, 700);
+  const years = useCountUp(4, 900);
 
   const typingTexts = [
     "Build. Market. Grow.",
@@ -123,11 +123,11 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center space-y-8">
 
           {/* Badge */}
-          <div className="animate-fade-in">
+          {/* <div className="animate-fade-in">
             <span className="text-xs uppercase tracking-wider bg-[#f7e839]/10 border border-[#f7e839]/20 px-4 py-2 rounded-full font-medium">
               Premium Digital Agency
             </span>
-          </div>
+          </div> */}
           
           {/* Main Heading with Typewriter */}
           <div className="relative">
