@@ -49,9 +49,12 @@ const ContactForm = () => {
     const location = form.user_location.value.trim();
     if (!location) errors.user_location = "Location is required.";
 
-    // user_website
-    const website = form.user_website.value.trim();
-    if (!isValidUrl(website)) errors.user_website = "Website link should be a valid URL ending in .com, .in, etc.";
+   // user_website (optional)
+   const website = form.user_website.value.trim();
+   if (website && !isValidUrl(website)) {
+      errors.user_website = "Please enter a valid website URL.";
+  }
+
 
     // service
     const service = form.service.value;
@@ -199,7 +202,6 @@ const ContactForm = () => {
           name="user_website"
           placeholder="https://yourwebsite.com"
           className={`p-3 rounded-lg bg-white/10 text-white border placeholder-white/50 focus:outline-none focus:ring-2 transition ${getFieldErrorClass("user_website")}`}
-          required
         />
         {fieldErrors.user_website && <span className="text-xs text-red-500">{fieldErrors.user_website}</span>}
       </div>
