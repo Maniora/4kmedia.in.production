@@ -136,7 +136,7 @@ const Footer = () => (
           <div className="space-y-4">
             <div>
               <a 
-                href="mailto:info@4kmedia.in" 
+                href="mailto:team@4kmedia.in" 
                 className="hover:text-[#f5d428] font-semibold transition-colors duration-200 block mb-1"
               >
                 team@4kmedia.in
