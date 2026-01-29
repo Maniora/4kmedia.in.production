@@ -99,9 +99,8 @@ const Terms = () => {
                   If you have any questions about these Terms of Service, please contact us at:
                 </p>
                 <div className="bg-white/5 border border-white/10 rounded-lg p-6">
-                  <p className="text-white/70 mb-2"><strong>Email:</strong> legal@4kmedia.in</p>
+                  <p className="text-white/70 mb-2"><strong>Email:</strong>team@4kmedia.in</p>
                   <p className="text-white/70 mb-2"><strong>Website:</strong> https://4kmedia.in</p>
-                  <p className="text-white/70"><strong>Last Updated:</strong> January 2024</p>
                 </div>
               </div>
             </div>
