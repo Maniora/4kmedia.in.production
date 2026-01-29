@@ -196,7 +196,7 @@ const ContactForm = () => {
 
       {/* Website Link */}
       <div className="flex flex-col gap-2 md:col-span-2">
-        <label className="text-sm text-white/70">Website Link *</label>
+        <label className="text-sm text-white/70">Website Link </label>
         <input
           type="url"
           name="user_website"
