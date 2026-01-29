@@ -203,7 +203,7 @@ const Privacy = () => (
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="mailto:info@4kmedia.in" 
+                href="mailto:team@4kmedia.in" 
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[#f7e839] to-[#f5d428] text-[#11181f] font-semibold hover:shadow-lg transition-all duration-200"
               >
                 Contact DPO
@@ -212,7 +212,7 @@ const Privacy = () => (
                 </svg>
               </a>
               <a 
-                href="mailto:info@4kmedia.in" 
+                href="mailto:team@4kmedia.in" 
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition-all duration-200"
               >
                 General Inquiries
