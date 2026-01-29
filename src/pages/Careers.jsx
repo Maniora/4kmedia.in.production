@@ -661,7 +661,7 @@ const Careers = () => {
                   <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </a>
-              <a href="mailto:info@4kmedia.com" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition-all duration-200">
+              <a href="mailto:team@4kmedia.in" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition-all duration-200">
                 team@4kmedia.in
               </a>
             </div>
