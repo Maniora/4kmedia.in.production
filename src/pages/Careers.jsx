@@ -662,7 +662,7 @@ const Careers = () => {
                 </svg>
               </a>
               <a href="mailto:info@4kmedia.com" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition-all duration-200">
-                info@4kmedia.com
+                team@4kmedia.in
               </a>
             </div>
           </Reveal>
