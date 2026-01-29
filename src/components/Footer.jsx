@@ -139,7 +139,7 @@ const Footer = () => (
                 href="mailto:info@4kmedia.in" 
                 className="hover:text-[#f5d428] font-semibold transition-colors duration-200 block mb-1"
               >
-                info@4kmedia.in
+                team@4kmedia.in
               </a>
               <p className="text-white/60 text-sm">Email Support</p>
             </div>
